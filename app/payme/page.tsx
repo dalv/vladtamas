@@ -1,129 +1,172 @@
+'use client'
+
 import Link from 'next/link'
+import { ArrowLeft, ExternalLink, Copy, Check } from 'lucide-react'
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
+import { useState } from 'react'
+
+function CopyButton({ text }: { text: string }) {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(text)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
+  return (
+    <button
+      onClick={handleCopy}
+      className="ml-2 inline-flex items-center justify-center rounded-md p-1 text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+      title="Copy to clipboard"
+    >
+      {copied ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <Copy className="h-3.5 w-3.5" />}
+    </button>
+  )
+}
+
+function DetailRow({ label, value, mono = false }: { label: string; value: string; mono?: boolean }) {
+  return (
+    <div className="flex items-center justify-between py-2">
+      <span className="text-sm text-muted-foreground">{label}</span>
+      <span className={`text-sm font-medium text-foreground ${mono ? 'font-mono' : ''} flex items-center`}>
+        {value}
+        {mono && <CopyButton text={value.replace(/\s/g, '')} />}
+      </span>
+    </div>
+  )
+}
 
 export default function PayMePage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-12 px-4">
-      <div className="max-w-2xl mx-auto">
-        <Link 
+    <main className="min-h-screen py-16 px-4">
+      <div className="max-w-lg mx-auto">
+        <Link
           href="/"
-          className="inline-block mb-8 text-blue-600 hover:text-blue-700 font-medium"
+          className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors mb-10"
         >
-          ← Back to Home
+          <ArrowLeft className="h-4 w-4" />
+          Back
         </Link>
-        
-        <h1 className="text-4xl font-bold text-slate-800 mb-2">
-          Send Me a Payment
-        </h1>
-        <p className="text-slate-600 mb-8">
-          Choose your preferred payment method below
-        </p>
+
+        <div className="mb-10">
+          <h1 className="text-3xl font-bold tracking-tight text-foreground">
+            Payment
+          </h1>
+          <p className="text-muted-foreground mt-1">
+            Choose a method below
+          </p>
+        </div>
 
         <div className="space-y-4">
           {/* Wise */}
-          <div className="bg-white rounded-lg shadow-md p-6 border border-slate-200">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-[#9fe870] rounded-full flex items-center justify-center">
-                <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#163300]" fill="currentColor">
-                  <path d="M12.5 2L8 11h4l-1 11 8.5-13H15l2-7z" />
-                </svg>
+          <Card className="transition-shadow hover:shadow-md">
+            <CardHeader className="pb-3">
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#9fe870]/15">
+                  <svg viewBox="0 0 24 24" className="h-4 w-4 text-[#4a9c1d]" fill="currentColor">
+                    <path d="M12.5 2L8 11h4l-1 11 8.5-13H15l2-7z" />
+                  </svg>
+                </div>
+                <CardTitle className="text-base">Wise</CardTitle>
               </div>
-              <h2 className="text-xl font-semibold text-slate-800">Wise</h2>
-            </div>
-            <p className="text-slate-600 mb-1">
-              Tag: <span className="font-mono font-semibold text-slate-800">@vladt35</span>
-            </p>
-            <a
-              href="https://wise.com/pay/me/vladt35"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-2 text-blue-600 hover:text-blue-700 underline font-medium"
-            >
-              wise.com/pay/me/vladt35
-            </a>
-          </div>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-sm font-medium">@vladt35</span>
+                <a
+                  href="https://wise.com/pay/me/vladt35"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+                >
+                  Pay via Wise
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* Revolut */}
-          <div className="bg-white rounded-lg shadow-md p-6 border border-slate-200">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm">R</span>
+          <Card className="transition-shadow hover:shadow-md">
+            <CardHeader className="pb-3">
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-foreground/5">
+                  <span className="text-sm font-bold text-foreground">R</span>
+                </div>
+                <CardTitle className="text-base">Revolut</CardTitle>
               </div>
-              <h2 className="text-xl font-semibold text-slate-800">Revolut</h2>
-            </div>
-            <p className="text-slate-600 mb-1">
-              Tag: <span className="font-mono font-semibold text-slate-800">@vladyv4a</span>
-            </p>
-            <a
-              href="https://revolut.me/vladyv4a"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-2 text-blue-600 hover:text-blue-700 underline font-medium"
-            >
-              revolut.me/vladyv4a
-            </a>
-          </div>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-sm font-medium">@vladyv4a</span>
+                <a
+                  href="https://revolut.me/vladyv4a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:underline"
+                >
+                  Pay via Revolut
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </CardContent>
+          </Card>
 
           {/* USD Bank Transfer */}
-          <div className="bg-white rounded-lg shadow-md p-6 border border-slate-200">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                <span className="text-blue-700 font-bold text-sm">$</span>
+          <Card className="transition-shadow hover:shadow-md">
+            <CardHeader className="pb-3">
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-500/10">
+                  <span className="text-sm font-semibold text-blue-600">$</span>
+                </div>
+                <CardTitle className="text-base">Bank Transfer — USD</CardTitle>
               </div>
-              <h2 className="text-xl font-semibold text-slate-800">Bank Transfer (USD)</h2>
-            </div>
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-slate-500">Name</span>
-                <span className="font-medium text-slate-800">Vlad Tamas</span>
+            </CardHeader>
+            <CardContent className="space-y-0">
+              <DetailRow label="Name" value="Vlad Tamas" />
+              <Separator />
+              <DetailRow label="Account number" value="8310103041" mono />
+              <Separator />
+              <DetailRow label="Account type" value="Checking" />
+              <Separator />
+              <DetailRow label="Routing (wire & ACH)" value="026073150" mono />
+              <Separator />
+              <DetailRow label="SWIFT / BIC" value="CMFGUS33" mono />
+              <Separator />
+              <div className="pt-3">
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Community Federal Savings Bank, 89-16 Jamaica Ave, Woodhaven, NY, 11421, United States
+                </p>
               </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500">Account number</span>
-                <span className="font-mono font-medium text-slate-800">8310103041</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500">Account type</span>
-                <span className="font-medium text-slate-800">Checking</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500">Routing number</span>
-                <span className="font-mono font-medium text-slate-800">026073150</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500">SWIFT/BIC</span>
-                <span className="font-mono font-medium text-slate-800">CMFGUS33</span>
-              </div>
-              <div className="border-t border-slate-100 pt-2 mt-2">
-                <span className="text-slate-500 text-xs">Bank: Community Federal Savings Bank, 89-16 Jamaica Ave, Woodhaven, NY, 11421, United States</span>
-              </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
 
           {/* EUR Bank Transfer */}
-          <div className="bg-white rounded-lg shadow-md p-6 border border-slate-200">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center">
-                <span className="text-yellow-700 font-bold text-sm">€</span>
+          <Card className="transition-shadow hover:shadow-md">
+            <CardHeader className="pb-3">
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber-500/10">
+                  <span className="text-sm font-semibold text-amber-600">€</span>
+                </div>
+                <CardTitle className="text-base">Bank Transfer — EUR</CardTitle>
               </div>
-              <h2 className="text-xl font-semibold text-slate-800">Bank Transfer (EUR)</h2>
-            </div>
-            <div className="space-y-2 text-sm">
-              <div className="flex justify-between">
-                <span className="text-slate-500">Name</span>
-                <span className="font-medium text-slate-800">Vlad Tamas</span>
+            </CardHeader>
+            <CardContent className="space-y-0">
+              <DetailRow label="Name" value="Vlad Tamas" />
+              <Separator />
+              <DetailRow label="IBAN" value="BE08 9671 1047 8013" mono />
+              <Separator />
+              <DetailRow label="SWIFT / BIC" value="TRWIBEB1XXX" mono />
+              <Separator />
+              <div className="pt-3">
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Wise, Rue du Trône 100, 3rd floor, Brussels, 1050, Belgium
+                </p>
               </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500">IBAN</span>
-                <span className="font-mono font-medium text-slate-800">BE08 9671 1047 8013</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500">SWIFT/BIC</span>
-                <span className="font-mono font-medium text-slate-800">TRWIBEB1XXX</span>
-              </div>
-              <div className="border-t border-slate-100 pt-2 mt-2">
-                <span className="text-slate-500 text-xs">Bank: Wise, Rue du Trône 100, 3rd floor, Brussels, 1050, Belgium</span>
-              </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </main>
