@@ -10,7 +10,7 @@ export default function HomePage() {
             Vlad Tamas
           </h1>
           <p className="text-muted-foreground text-lg">
-            ·
+            ---
           </p>
         </div>
 
