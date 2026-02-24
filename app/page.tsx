@@ -10,17 +10,24 @@ export default function HomePage() {
             Vlad Tamas
           </h1>
           <p className="text-muted-foreground text-lg">
-            
           </p>
         </div>
-
-        <Link
-          href="/payme"
-          className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:gap-3"
-        >
-          Send Payment
-          <ArrowRight className="h-4 w-4" />
-        </Link>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link
+            href="/payme"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:gap-3"
+          >
+            Send Payment
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link
+            href="/whoistraining"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:gap-3"
+          >
+            Who Is Training
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
       </div>
     </main>
   )
