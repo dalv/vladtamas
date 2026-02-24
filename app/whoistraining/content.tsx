@@ -281,7 +281,7 @@ export function WhoIsTrainingContent() {
                 type="text"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="e.g. Looking for a base for icarian!"
+                placeholder="e.g. Looking for a base for icarians!"
                 maxLength={140}
                 className="w-full px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg 
                            text-white placeholder:text-zinc-500 focus:outline-none 
