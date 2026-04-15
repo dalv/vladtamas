@@ -96,6 +96,12 @@ export function WorkoutsContent() {
   const dragRef = useRef<DragState | null>(null);
   dragRef.current = drag;
 
+  // Today, in Monday=0 … Sunday=6 form. Set after mount to avoid SSR mismatch.
+  const [todayIndex, setTodayIndex] = useState<number | null>(null);
+  useEffect(() => {
+    setTodayIndex((new Date().getDay() + 6) % 7);
+  }, []);
+
   // ----- Data fetching -----
   const fetchAll = useCallback(async () => {
     const [{ data: w, error: we }, { data: s, error: se }] = await Promise.all([
@@ -396,6 +402,7 @@ export function WorkoutsContent() {
           {DAYS.map((dayName, i) => {
             const entries = scheduleByDay[i] || [];
             const isHover = drag?.hoverDay === i;
+            const isToday = todayIndex === i;
             return (
               <div
                 key={dayName}
@@ -408,8 +415,18 @@ export function WorkoutsContent() {
                     : "bg-zinc-50"
                 }`}
               >
-                <div className="w-24 sm:w-28 shrink-0 px-3 py-2.5 text-sm font-medium text-zinc-700 border-r border-zinc-200 flex items-center">
-                  {dayName}
+                <div
+                  className={`w-24 sm:w-28 shrink-0 px-3 py-2.5 text-sm border-r border-zinc-200 flex items-center gap-2 ${
+                    isToday ? "font-semibold text-zinc-900" : "font-medium text-zinc-700"
+                  }`}
+                >
+                  <span
+                    className={`h-2 w-2 rounded-full shrink-0 ${
+                      isToday ? "bg-emerald-500" : "bg-transparent"
+                    }`}
+                    aria-hidden
+                  />
+                  <span>{dayName}</span>
                 </div>
                 <div className="flex-1 min-h-[52px] px-3 py-2 flex flex-wrap items-center gap-2">
                   {entries.map((entry) => {
