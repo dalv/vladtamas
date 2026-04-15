@@ -11,6 +11,7 @@ import {
   supabase,
   type Workout,
   type WorkoutScheduleEntry,
+  type WorkoutDayNote,
 } from "@/lib/supabase";
 
 // A curated palette of ~17 muted, pastel label colors.
@@ -85,6 +86,9 @@ type DragState = {
 export function WorkoutsContent() {
   const [workouts, setWorkouts] = useState<Workout[]>([]);
   const [schedule, setSchedule] = useState<WorkoutScheduleEntry[]>([]);
+  const [notes, setNotes] = useState<Record<number, string>>({});
+  // Last value we successfully persisted per day — used to skip no-op saves on blur.
+  const savedNotesRef = useRef<Record<number, string>>({});
   const [loading, setLoading] = useState(true);
 
   const [newTitle, setNewTitle] = useState("");
@@ -104,19 +108,31 @@ export function WorkoutsContent() {
 
   // ----- Data fetching -----
   const fetchAll = useCallback(async () => {
-    const [{ data: w, error: we }, { data: s, error: se }] = await Promise.all([
+    const [
+      { data: w, error: we },
+      { data: s, error: se },
+      { data: n, error: ne },
+    ] = await Promise.all([
       supabase.from("workouts").select("*").order("created_at", { ascending: true }),
       supabase
         .from("workout_schedule")
         .select("*")
         .order("position", { ascending: true }),
+      supabase.from("workout_day_notes").select("*"),
     ]);
     if (we) console.error("Error fetching workouts:", we);
     if (se) console.error("Error fetching schedule:", se);
+    if (ne) console.error("Error fetching notes:", ne);
     setWorkouts(
       (w || []).map((row) => ({ ...row, color: normalizeColor(row.color) }))
     );
     setSchedule(s || []);
+    const noteMap: Record<number, string> = {};
+    for (const row of (n || []) as WorkoutDayNote[]) {
+      noteMap[row.day_of_week] = row.note;
+    }
+    setNotes(noteMap);
+    savedNotesRef.current = { ...noteMap };
     setLoading(false);
   }, []);
 
@@ -188,6 +204,23 @@ export function WorkoutsContent() {
       console.error("Error removing scheduled entry:", error);
       setSchedule(prev);
     }
+  };
+
+  // ----- Day notes: persist on blur -----
+  const handleNoteBlur = async (day: number) => {
+    const current = (notes[day] ?? "").trimEnd();
+    if (savedNotesRef.current[day] === current) return; // nothing to save
+    const { error } = await supabase
+      .from("workout_day_notes")
+      .upsert(
+        { day_of_week: day, note: current },
+        { onConflict: "day_of_week" }
+      );
+    if (error) {
+      console.error("Error saving note:", error);
+      return;
+    }
+    savedNotesRef.current[day] = current;
   };
 
   // ----- Drag & drop via pointer events (works on desktop + touch) -----
@@ -440,6 +473,18 @@ export function WorkoutsContent() {
                       />
                     );
                   })}
+                </div>
+                <div className="w-40 sm:w-56 shrink-0 border-l border-zinc-200 px-2 py-2 flex items-center">
+                  <input
+                    type="text"
+                    value={notes[i] ?? ""}
+                    onChange={(e) =>
+                      setNotes((prev) => ({ ...prev, [i]: e.target.value }))
+                    }
+                    onBlur={() => handleNoteBlur(i)}
+                    placeholder="Catatan..."
+                    className="w-full bg-transparent text-sm text-zinc-700 placeholder:text-zinc-400 focus:outline-none"
+                  />
                 </div>
               </div>
             );

@@ -30,3 +30,9 @@ export type WorkoutScheduleEntry = {
   position: number;
   created_at: string;
 };
+
+export type WorkoutDayNote = {
+  id: string;
+  day_of_week: number; // 0 = Monday ... 6 = Sunday
+  note: string;
+};
