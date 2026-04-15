@@ -36,3 +36,8 @@ export type WorkoutDayNote = {
   day_of_week: number; // 0 = Monday ... 6 = Sunday
   note: string;
 };
+
+export type WorkoutScratch = {
+  id: number; // always 1 — table is a singleton
+  note: string;
+};

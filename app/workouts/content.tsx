@@ -12,6 +12,7 @@ import {
   type Workout,
   type WorkoutScheduleEntry,
   type WorkoutDayNote,
+  type WorkoutScratch,
 } from "@/lib/supabase";
 
 // A curated palette of ~17 muted, pastel label colors.
@@ -89,6 +90,8 @@ export function WorkoutsContent() {
   const [notes, setNotes] = useState<Record<number, string>>({});
   // Last value we successfully persisted per day — used to skip no-op saves on blur.
   const savedNotesRef = useRef<Record<number, string>>({});
+  const [scratch, setScratch] = useState("");
+  const savedScratchRef = useRef("");
   const [loading, setLoading] = useState(true);
 
   const [newTitle, setNewTitle] = useState("");
@@ -112,6 +115,7 @@ export function WorkoutsContent() {
       { data: w, error: we },
       { data: s, error: se },
       { data: n, error: ne },
+      { data: sc, error: sce },
     ] = await Promise.all([
       supabase.from("workouts").select("*").order("created_at", { ascending: true }),
       supabase
@@ -119,10 +123,12 @@ export function WorkoutsContent() {
         .select("*")
         .order("position", { ascending: true }),
       supabase.from("workout_day_notes").select("*"),
+      supabase.from("workout_scratch").select("*").eq("id", 1).maybeSingle(),
     ]);
     if (we) console.error("Error fetching workouts:", we);
     if (se) console.error("Error fetching schedule:", se);
     if (ne) console.error("Error fetching notes:", ne);
+    if (sce) console.error("Error fetching scratch:", sce);
     setWorkouts(
       (w || []).map((row) => ({ ...row, color: normalizeColor(row.color) }))
     );
@@ -133,6 +139,9 @@ export function WorkoutsContent() {
     }
     setNotes(noteMap);
     savedNotesRef.current = { ...noteMap };
+    const scratchText = (sc as WorkoutScratch | null)?.note ?? "";
+    setScratch(scratchText);
+    savedScratchRef.current = scratchText;
     setLoading(false);
   }, []);
 
@@ -221,6 +230,19 @@ export function WorkoutsContent() {
       return;
     }
     savedNotesRef.current[day] = current;
+  };
+
+  // ----- Scratchpad: persist singleton row on blur -----
+  const handleScratchBlur = async () => {
+    if (savedScratchRef.current === scratch) return;
+    const { error } = await supabase
+      .from("workout_scratch")
+      .upsert({ id: 1, note: scratch }, { onConflict: "id" });
+    if (error) {
+      console.error("Error saving scratch:", error);
+      return;
+    }
+    savedScratchRef.current = scratch;
   };
 
   // ----- Drag & drop via pointer events (works on desktop + touch) -----
@@ -490,6 +512,18 @@ export function WorkoutsContent() {
             );
           })}
         </div>
+
+        {/* Free-form scratchpad */}
+        <textarea
+          value={scratch}
+          onChange={(e) => setScratch(e.target.value)}
+          onBlur={handleScratchBlur}
+          placeholder="Coretan & ide..."
+          rows={8}
+          className="mt-5 w-full px-4 py-3 bg-white border border-zinc-200 rounded-xl
+                     text-sm text-zinc-800 placeholder:text-zinc-400 focus:outline-none
+                     focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition resize-y"
+        />
       </div>
 
       {/* Drag ghost */}
