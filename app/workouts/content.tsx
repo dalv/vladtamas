@@ -245,8 +245,8 @@ export function WorkoutsContent() {
 
   return (
     <div className="min-h-screen bg-white text-zinc-900">
-      <div className="max-w-3xl mx-auto px-4 pt-4 pb-6">
-        <div className="flex items-center justify-between mb-3">
+      <div className="max-w-3xl mx-auto px-4 pt-5 pb-8">
+        <div className="flex items-center justify-between mb-4">
           <a
             href="/"
             className="text-zinc-500 hover:text-zinc-700 text-sm transition-colors"
@@ -261,7 +261,7 @@ export function WorkoutsContent() {
         {/* 1. Create a workout */}
         <form
           onSubmit={handleCreate}
-          className="flex items-center gap-2 mb-3"
+          className="flex items-center gap-2 mb-4"
         >
           {/* Color picker */}
           <div className="relative" data-color-picker>
@@ -320,17 +320,17 @@ export function WorkoutsContent() {
         </form>
 
         {/* 2. Directory of workout pills */}
-        <div className="mb-4">
+        <div className="mb-5">
           {loading ? (
             <div className="flex py-1">
               <div className="w-4 h-4 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
             </div>
           ) : workouts.length === 0 ? (
-            <p className="text-zinc-400 text-xs">
+            <p className="text-zinc-400 text-sm">
               No workouts yet. Add your first one above.
             </p>
           ) : (
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-2">
               {workouts.map((w) => (
                 <WorkoutPill
                   key={w.id}
@@ -364,10 +364,10 @@ export function WorkoutsContent() {
                     : "bg-zinc-50"
                 }`}
               >
-                <div className="w-20 sm:w-24 shrink-0 px-3 py-1.5 text-sm font-medium text-zinc-700 border-r border-zinc-200 flex items-center">
+                <div className="w-24 sm:w-28 shrink-0 px-3 py-2.5 text-sm font-medium text-zinc-700 border-r border-zinc-200 flex items-center">
                   {dayName}
                 </div>
-                <div className="flex-1 min-h-[36px] px-2 py-1 flex flex-wrap items-center gap-1.5">
+                <div className="flex-1 min-h-[52px] px-3 py-2 flex flex-wrap items-center gap-2">
                   {entries.map((entry) => {
                     const w = workoutsById[entry.workout_id];
                     if (!w) return null;
@@ -397,7 +397,7 @@ export function WorkoutsContent() {
           }}
         >
           <span
-            className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium text-white shadow-lg"
+            className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium text-white shadow-lg"
             style={{
               backgroundColor: drag.workout.color,
               opacity: 0.95,
@@ -433,7 +433,7 @@ function WorkoutPill({
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
-      className={`group inline-flex items-center gap-1 pl-2.5 pr-1 py-0.5 rounded-full text-xs font-medium text-white shadow-sm transition-opacity ${
+      className={`group inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 rounded-full text-sm font-medium text-white shadow-sm transition-opacity ${
         draggable ? "cursor-grab active:cursor-grabbing touch-none" : ""
       } ${dimmed ? "opacity-40" : ""}`}
       style={{ backgroundColor: workout.color }}
@@ -447,14 +447,14 @@ function WorkoutPill({
             e.stopPropagation();
             onDelete();
           }}
-          className="ml-0.5 h-4 w-4 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center text-white/90 transition"
+          className="ml-0.5 h-5 w-5 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center text-white/90 transition"
           aria-label={`Delete ${workout.title}`}
           title="Delete workout"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="9"
-            height="9"
+            width="10"
+            height="10"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -480,21 +480,21 @@ function ScheduledPill({
 }) {
   return (
     <span
-      className="inline-flex items-center gap-1 pl-2.5 pr-1 py-0.5 rounded-full text-xs font-medium text-white shadow-sm"
+      className="inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 rounded-full text-sm font-medium text-white shadow-sm"
       style={{ backgroundColor: workout.color }}
     >
       <span>{workout.title}</span>
       <button
         type="button"
         onClick={onRemove}
-        className="ml-0.5 h-4 w-4 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center text-white/90 transition"
+        className="ml-0.5 h-5 w-5 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center text-white/90 transition"
         aria-label={`Remove ${workout.title} from schedule`}
         title="Remove from day"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="9"
-          height="9"
+          width="10"
+          height="10"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
