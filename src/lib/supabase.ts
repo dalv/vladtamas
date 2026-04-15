@@ -15,3 +15,18 @@ export type Checkin = {
   created_at: string;
   checkin_date: string;
 };
+
+export type Workout = {
+  id: string;
+  title: string;
+  color: string;
+  created_at: string;
+};
+
+export type WorkoutScheduleEntry = {
+  id: string;
+  workout_id: string;
+  day_of_week: number; // 0 = Monday ... 6 = Sunday
+  position: number;
+  created_at: string;
+};

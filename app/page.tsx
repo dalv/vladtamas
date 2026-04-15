@@ -27,6 +27,13 @@ export default function HomePage() {
             Who Is Training
             <ArrowRight className="h-4 w-4" />
           </Link>
+          <Link
+            href="/workouts"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:gap-3"
+          >
+            Workouts
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     </main>
