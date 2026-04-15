@@ -462,7 +462,7 @@ export function WorkoutsContent() {
               <div
                 key={dayName}
                 data-day-cell={i}
-                className={`flex items-stretch border-b last:border-b-0 border-zinc-200 transition-colors ${
+                className={`grid items-stretch grid-cols-[5rem_1fr] sm:grid-cols-[7rem_1fr_14rem] border-b last:border-b-0 border-zinc-200 transition-colors ${
                   isHover
                     ? "bg-emerald-100"
                     : i % 2 === 0
@@ -471,7 +471,7 @@ export function WorkoutsContent() {
                 }`}
               >
                 <div
-                  className={`w-24 sm:w-28 shrink-0 px-3 py-2.5 text-sm border-r border-zinc-200 flex items-center gap-2 ${
+                  className={`px-3 py-2.5 text-sm border-r border-zinc-200 flex items-center gap-2 ${
                     isToday ? "font-semibold text-zinc-900" : "font-medium text-zinc-700"
                   }`}
                 >
@@ -483,7 +483,7 @@ export function WorkoutsContent() {
                   />
                   <span>{dayName}</span>
                 </div>
-                <div className="flex-1 min-h-[52px] px-3 py-2 flex flex-wrap items-center gap-2">
+                <div className="min-h-[52px] px-3 py-2 flex flex-wrap items-center gap-2">
                   {entries.map((entry) => {
                     const w = workoutsById[entry.workout_id];
                     if (!w) return null;
@@ -496,7 +496,7 @@ export function WorkoutsContent() {
                     );
                   })}
                 </div>
-                <div className="w-40 sm:w-56 shrink-0 border-l border-zinc-200 px-2 py-2 flex items-center">
+                <div className="col-span-2 sm:col-span-1 border-t sm:border-t-0 sm:border-l border-zinc-200 px-3 py-1.5 flex items-center">
                   <input
                     type="text"
                     value={notes[i] ?? ""}
@@ -580,7 +580,7 @@ function WorkoutPill({
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
-      className={`group inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 rounded-full text-sm font-medium text-zinc-800 shadow-sm transition-opacity ${
+      className={`group inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 rounded-full text-sm font-medium text-zinc-800 shadow-sm whitespace-nowrap transition-opacity ${
         draggable ? "cursor-grab active:cursor-grabbing touch-none" : ""
       } ${dimmed ? "opacity-40" : ""}`}
       style={{ backgroundColor: workout.color }}
@@ -632,7 +632,7 @@ function ScheduledPill({
 }) {
   return (
     <span
-      className="inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 rounded-full text-sm font-medium text-zinc-800 shadow-sm"
+      className="inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 rounded-full text-sm font-medium text-zinc-800 shadow-sm whitespace-nowrap"
       style={{ backgroundColor: workout.color }}
     >
       <span>{workout.title}</span>
