@@ -244,105 +244,93 @@ export function WorkoutsContent() {
   }, [workouts]);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
-      <div className="max-w-4xl mx-auto px-4 pt-12 pb-20">
-        <a
-          href="/"
-          className="text-zinc-500 hover:text-zinc-300 text-sm transition-colors"
-        >
-          ← vladtamas.com
-        </a>
-
-        <div className="mt-8 mb-6">
-          <h1 className="text-3xl font-bold tracking-tight">
-            Workouts <span className="inline-block ml-2">💪</span>
+    <div className="min-h-screen bg-white text-zinc-900">
+      <div className="max-w-3xl mx-auto px-4 pt-4 pb-6">
+        <div className="flex items-center justify-between mb-3">
+          <a
+            href="/"
+            className="text-zinc-500 hover:text-zinc-700 text-sm transition-colors"
+          >
+            ← vladtamas.com
+          </a>
+          <h1 className="text-lg font-semibold tracking-tight">
+            Workouts <span className="ml-1">💪</span>
           </h1>
-          <p className="text-zinc-400 mt-2">
-            Build your directory, then drag workouts into your week.
-          </p>
         </div>
 
         {/* 1. Create a workout */}
         <form
           onSubmit={handleCreate}
-          className="bg-zinc-900 border border-zinc-800 rounded-2xl p-4 sm:p-5 mb-6"
+          className="flex items-center gap-2 mb-3"
         >
-          <label className="block text-sm text-zinc-400 mb-2">
-            Add a workout
-          </label>
-          <div className="flex flex-wrap items-center gap-2">
-            {/* Color picker */}
-            <div className="relative" data-color-picker>
-              <button
-                type="button"
-                onClick={() => setColorPickerOpen((o) => !o)}
-                className="h-10 w-10 rounded-lg border border-zinc-700 bg-zinc-800 flex items-center justify-center hover:border-zinc-600 transition"
-                aria-label="Pick color"
-              >
-                <span
-                  className="h-6 w-6 rounded-full border border-black/30"
-                  style={{ backgroundColor: newColor }}
-                />
-              </button>
-              {colorPickerOpen && (
-                <div className="absolute z-20 mt-2 left-0 w-56 p-3 bg-zinc-900 border border-zinc-700 rounded-xl shadow-xl grid grid-cols-6 gap-2">
-                  {COLORS.map((c) => (
-                    <button
-                      key={c.hex}
-                      type="button"
-                      onClick={() => {
-                        setNewColor(c.hex);
-                        setColorPickerOpen(false);
-                      }}
-                      title={c.name}
-                      className={`h-7 w-7 rounded-full border transition-transform hover:scale-110 ${
-                        newColor === c.hex
-                          ? "border-white ring-2 ring-white/40"
-                          : "border-black/30"
-                      }`}
-                      style={{ backgroundColor: c.hex }}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <input
-              type="text"
-              value={newTitle}
-              onChange={(e) => setNewTitle(e.target.value)}
-              placeholder="e.g. Back squat"
-              className="flex-1 min-w-0 px-4 py-2.5 bg-zinc-800 border border-zinc-700 rounded-lg
-                         text-white placeholder:text-zinc-500 focus:outline-none
-                         focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition"
-            />
-
+          {/* Color picker */}
+          <div className="relative" data-color-picker>
             <button
-              type="submit"
-              disabled={creating || !newTitle.trim()}
-              className="px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 rounded-lg
-                         font-semibold text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+              type="button"
+              onClick={() => setColorPickerOpen((o) => !o)}
+              className="h-9 w-9 rounded-lg border border-zinc-300 bg-white flex items-center justify-center hover:border-zinc-400 transition"
+              aria-label="Pick color"
             >
-              {creating ? "Adding…" : "Create"}
+              <span
+                className="h-5 w-5 rounded-full border border-black/20"
+                style={{ backgroundColor: newColor }}
+              />
             </button>
+            {colorPickerOpen && (
+              <div className="absolute z-20 mt-2 left-0 w-56 p-3 bg-white border border-zinc-200 rounded-xl shadow-xl grid grid-cols-6 gap-2">
+                {COLORS.map((c) => (
+                  <button
+                    key={c.hex}
+                    type="button"
+                    onClick={() => {
+                      setNewColor(c.hex);
+                      setColorPickerOpen(false);
+                    }}
+                    title={c.name}
+                    className={`h-7 w-7 rounded-full border transition-transform hover:scale-110 ${
+                      newColor === c.hex
+                        ? "border-zinc-900 ring-2 ring-zinc-900/30"
+                        : "border-black/20"
+                    }`}
+                    style={{ backgroundColor: c.hex }}
+                  />
+                ))}
+              </div>
+            )}
           </div>
+
+          <input
+            type="text"
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+            placeholder="Add a workout (e.g. Back squat)"
+            className="flex-1 min-w-0 h-9 px-3 bg-white border border-zinc-300 rounded-lg
+                       text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none
+                       focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition"
+          />
+
+          <button
+            type="submit"
+            disabled={creating || !newTitle.trim()}
+            className="h-9 px-3 bg-emerald-600 hover:bg-emerald-500 rounded-lg
+                       font-semibold text-sm text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {creating ? "…" : "Create"}
+          </button>
         </form>
 
         {/* 2. Directory of workout pills */}
-        <div className="mb-8">
-          <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-3">
-            Your Workouts
-          </h2>
+        <div className="mb-4">
           {loading ? (
-            <div className="flex py-4">
-              <div className="w-5 h-5 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+            <div className="flex py-1">
+              <div className="w-4 h-4 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
             </div>
           ) : workouts.length === 0 ? (
-            <p className="text-zinc-600 text-sm">
+            <p className="text-zinc-400 text-xs">
               No workouts yet. Add your first one above.
             </p>
           ) : (
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5">
               {workouts.map((w) => (
                 <WorkoutPill
                   key={w.id}
@@ -360,55 +348,41 @@ export function WorkoutsContent() {
         </div>
 
         {/* 3. Weekly calendar */}
-        <div>
-          <h2 className="text-sm font-semibold text-zinc-400 uppercase tracking-wider mb-3">
-            Your Week
-          </h2>
-          <div className="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden">
-            {DAYS.map((dayName, i) => {
-              const entries = scheduleByDay[i] || [];
-              const isHover = drag?.hoverDay === i;
-              return (
-                <div
-                  key={dayName}
-                  data-day-cell={i}
-                  className={`flex items-stretch border-b last:border-b-0 border-zinc-800 transition-colors ${
-                    isHover
-                      ? "bg-emerald-900/30"
-                      : i % 2 === 0
-                      ? "bg-zinc-900"
-                      : "bg-zinc-900/60"
-                  }`}
-                >
-                  <div className="w-28 sm:w-36 shrink-0 px-4 py-3 font-semibold text-zinc-300 border-r border-zinc-800 flex items-center">
-                    {dayName}
-                  </div>
-                  <div className="flex-1 min-h-[56px] px-3 py-2 flex flex-wrap items-center gap-2">
-                    {entries.length === 0 && !isHover && (
-                      <span className="text-zinc-700 text-sm italic">
-                        Drop a workout here
-                      </span>
-                    )}
-                    {entries.map((entry) => {
-                      const w = workoutsById[entry.workout_id];
-                      if (!w) return null;
-                      return (
-                        <ScheduledPill
-                          key={entry.id}
-                          workout={w}
-                          onRemove={() => handleRemoveScheduled(entry.id)}
-                        />
-                      );
-                    })}
-                  </div>
+        <div className="border border-zinc-200 rounded-xl overflow-hidden">
+          {DAYS.map((dayName, i) => {
+            const entries = scheduleByDay[i] || [];
+            const isHover = drag?.hoverDay === i;
+            return (
+              <div
+                key={dayName}
+                data-day-cell={i}
+                className={`flex items-stretch border-b last:border-b-0 border-zinc-200 transition-colors ${
+                  isHover
+                    ? "bg-emerald-100"
+                    : i % 2 === 0
+                    ? "bg-white"
+                    : "bg-zinc-50"
+                }`}
+              >
+                <div className="w-20 sm:w-24 shrink-0 px-3 py-1.5 text-sm font-medium text-zinc-700 border-r border-zinc-200 flex items-center">
+                  {dayName}
                 </div>
-              );
-            })}
-          </div>
-          <p className="text-xs text-zinc-600 mt-3">
-            Tip: press and hold a workout pill, then drag it into a day. Tap
-            the × on a scheduled pill to remove it.
-          </p>
+                <div className="flex-1 min-h-[36px] px-2 py-1 flex flex-wrap items-center gap-1.5">
+                  {entries.map((entry) => {
+                    const w = workoutsById[entry.workout_id];
+                    if (!w) return null;
+                    return (
+                      <ScheduledPill
+                        key={entry.id}
+                        workout={w}
+                        onRemove={() => handleRemoveScheduled(entry.id)}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -423,7 +397,7 @@ export function WorkoutsContent() {
           }}
         >
           <span
-            className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium text-white shadow-lg"
+            className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium text-white shadow-lg"
             style={{
               backgroundColor: drag.workout.color,
               opacity: 0.95,
@@ -459,7 +433,7 @@ function WorkoutPill({
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
-      className={`group inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 rounded-full text-sm font-medium text-white shadow-sm transition-opacity ${
+      className={`group inline-flex items-center gap-1 pl-2.5 pr-1 py-0.5 rounded-full text-xs font-medium text-white shadow-sm transition-opacity ${
         draggable ? "cursor-grab active:cursor-grabbing touch-none" : ""
       } ${dimmed ? "opacity-40" : ""}`}
       style={{ backgroundColor: workout.color }}
@@ -473,14 +447,14 @@ function WorkoutPill({
             e.stopPropagation();
             onDelete();
           }}
-          className="ml-0.5 h-5 w-5 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center text-white/90 transition"
+          className="ml-0.5 h-4 w-4 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center text-white/90 transition"
           aria-label={`Delete ${workout.title}`}
           title="Delete workout"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="10"
-            height="10"
+            width="9"
+            height="9"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -506,21 +480,21 @@ function ScheduledPill({
 }) {
   return (
     <span
-      className="inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 rounded-full text-sm font-medium text-white shadow-sm"
+      className="inline-flex items-center gap-1 pl-2.5 pr-1 py-0.5 rounded-full text-xs font-medium text-white shadow-sm"
       style={{ backgroundColor: workout.color }}
     >
       <span>{workout.title}</span>
       <button
         type="button"
         onClick={onRemove}
-        className="ml-0.5 h-5 w-5 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center text-white/90 transition"
+        className="ml-0.5 h-4 w-4 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center text-white/90 transition"
         aria-label={`Remove ${workout.title} from schedule`}
         title="Remove from day"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="10"
-          height="10"
+          width="9"
+          height="9"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
