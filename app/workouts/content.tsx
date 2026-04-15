@@ -13,26 +13,52 @@ import {
   type WorkoutScheduleEntry,
 } from "@/lib/supabase";
 
-// A curated palette of ~17 commonly-used label colors.
+// A curated palette of ~17 muted, pastel label colors.
 const COLORS: { name: string; hex: string }[] = [
-  { name: "Merah", hex: "#ef4444" },
-  { name: "Jingga", hex: "#f97316" },
-  { name: "Amber", hex: "#f59e0b" },
-  { name: "Kuning", hex: "#eab308" },
-  { name: "Hijau Limau", hex: "#84cc16" },
-  { name: "Hijau", hex: "#22c55e" },
-  { name: "Zamrud", hex: "#10b981" },
-  { name: "Tosca", hex: "#14b8a6" },
-  { name: "Sian", hex: "#06b6d4" },
-  { name: "Biru Langit", hex: "#0ea5e9" },
-  { name: "Biru", hex: "#3b82f6" },
-  { name: "Nila", hex: "#6366f1" },
-  { name: "Violet", hex: "#8b5cf6" },
-  { name: "Ungu", hex: "#a855f7" },
-  { name: "Fuchsia", hex: "#d946ef" },
-  { name: "Merah Muda", hex: "#ec4899" },
-  { name: "Mawar", hex: "#f43f5e" },
+  { name: "Merah", hex: "#fca5a5" },
+  { name: "Jingga", hex: "#fdba74" },
+  { name: "Amber", hex: "#fcd34d" },
+  { name: "Kuning", hex: "#fde047" },
+  { name: "Hijau Limau", hex: "#bef264" },
+  { name: "Hijau", hex: "#86efac" },
+  { name: "Zamrud", hex: "#6ee7b7" },
+  { name: "Tosca", hex: "#5eead4" },
+  { name: "Sian", hex: "#67e8f9" },
+  { name: "Biru Langit", hex: "#7dd3fc" },
+  { name: "Biru", hex: "#93c5fd" },
+  { name: "Nila", hex: "#a5b4fc" },
+  { name: "Violet", hex: "#c4b5fd" },
+  { name: "Ungu", hex: "#d8b4fe" },
+  { name: "Fuchsia", hex: "#f0abfc" },
+  { name: "Merah Muda", hex: "#f9a8d4" },
+  { name: "Mawar", hex: "#fda4af" },
 ];
+
+// Map from the old saturated palette → new muted palette, so any workouts
+// already stored in the DB pick up the new look without a migration.
+const LEGACY_COLOR_MAP: Record<string, string> = {
+  "#ef4444": "#fca5a5",
+  "#f97316": "#fdba74",
+  "#f59e0b": "#fcd34d",
+  "#eab308": "#fde047",
+  "#84cc16": "#bef264",
+  "#22c55e": "#86efac",
+  "#10b981": "#6ee7b7",
+  "#14b8a6": "#5eead4",
+  "#06b6d4": "#67e8f9",
+  "#0ea5e9": "#7dd3fc",
+  "#3b82f6": "#93c5fd",
+  "#6366f1": "#a5b4fc",
+  "#8b5cf6": "#c4b5fd",
+  "#a855f7": "#d8b4fe",
+  "#d946ef": "#f0abfc",
+  "#ec4899": "#f9a8d4",
+  "#f43f5e": "#fda4af",
+};
+
+function normalizeColor(hex: string): string {
+  return LEGACY_COLOR_MAP[hex.toLowerCase()] ?? hex;
+}
 
 const DAYS = [
   "Senin",
@@ -76,7 +102,9 @@ export function WorkoutsContent() {
     ]);
     if (we) console.error("Error fetching workouts:", we);
     if (se) console.error("Error fetching schedule:", se);
-    setWorkouts(w || []);
+    setWorkouts(
+      (w || []).map((row) => ({ ...row, color: normalizeColor(row.color) }))
+    );
     setSchedule(s || []);
     setLoading(false);
   }, []);
@@ -397,7 +425,7 @@ export function WorkoutsContent() {
           }}
         >
           <span
-            className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium text-white shadow-lg"
+            className="inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium text-zinc-800 shadow-lg"
             style={{
               backgroundColor: drag.workout.color,
               opacity: 0.95,
@@ -433,7 +461,7 @@ function WorkoutPill({
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
-      className={`group inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 rounded-full text-sm font-medium text-white shadow-sm transition-opacity ${
+      className={`group inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 rounded-full text-sm font-medium text-zinc-800 shadow-sm transition-opacity ${
         draggable ? "cursor-grab active:cursor-grabbing touch-none" : ""
       } ${dimmed ? "opacity-40" : ""}`}
       style={{ backgroundColor: workout.color }}
@@ -447,7 +475,7 @@ function WorkoutPill({
             e.stopPropagation();
             onDelete();
           }}
-          className="ml-0.5 h-5 w-5 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center text-white/90 transition"
+          className="ml-0.5 h-5 w-5 rounded-full bg-black/10 hover:bg-black/25 flex items-center justify-center text-zinc-700 transition"
           aria-label={`Hapus ${workout.title}`}
           title="Hapus latihan"
         >
@@ -480,14 +508,14 @@ function ScheduledPill({
 }) {
   return (
     <span
-      className="inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 rounded-full text-sm font-medium text-white shadow-sm"
+      className="inline-flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 rounded-full text-sm font-medium text-zinc-800 shadow-sm"
       style={{ backgroundColor: workout.color }}
     >
       <span>{workout.title}</span>
       <button
         type="button"
         onClick={onRemove}
-        className="ml-0.5 h-5 w-5 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center text-white/90 transition"
+        className="ml-0.5 h-5 w-5 rounded-full bg-black/10 hover:bg-black/25 flex items-center justify-center text-zinc-700 transition"
         aria-label={`Hapus ${workout.title} dari jadwal`}
         title="Hapus dari hari"
       >
