@@ -462,7 +462,7 @@ export function WorkoutsContent() {
               <div
                 key={dayName}
                 data-day-cell={i}
-                className={`grid items-stretch grid-cols-[5rem_1fr] sm:grid-cols-[7rem_1fr_14rem] border-b last:border-b-0 border-zinc-200 transition-colors ${
+                className={`grid items-stretch grid-cols-[6rem_1fr] sm:grid-cols-[7rem_1fr_14rem] border-b last:border-b-0 border-zinc-200 transition-colors ${
                   isHover
                     ? "bg-emerald-100"
                     : i % 2 === 0
