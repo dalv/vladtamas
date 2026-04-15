@@ -60,6 +60,11 @@ function normalizeColor(hex: string): string {
   return LEGACY_COLOR_MAP[hex.toLowerCase()] ?? hex;
 }
 
+function pickRandomColor(except?: string): string {
+  const pool = except ? COLORS.filter((c) => c.hex !== except) : COLORS;
+  return pool[Math.floor(Math.random() * pool.length)].hex;
+}
+
 const DAYS = [
   "Senin",
   "Selasa",
@@ -83,7 +88,7 @@ export function WorkoutsContent() {
   const [loading, setLoading] = useState(true);
 
   const [newTitle, setNewTitle] = useState("");
-  const [newColor, setNewColor] = useState(COLORS[10].hex); // Blue
+  const [newColor, setNewColor] = useState<string>(() => pickRandomColor());
   const [colorPickerOpen, setColorPickerOpen] = useState(false);
   const [creating, setCreating] = useState(false);
 
@@ -143,6 +148,7 @@ export function WorkoutsContent() {
     } else if (data) {
       setWorkouts((prev) => [...prev, data]);
       setNewTitle("");
+      setNewColor((prev) => pickRandomColor(prev));
     }
     setCreating(false);
   };
@@ -271,6 +277,15 @@ export function WorkoutsContent() {
     return map;
   }, [workouts]);
 
+  // How many times each workout appears across the week — shown on directory pills.
+  const usageCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const entry of schedule) {
+      counts[entry.workout_id] = (counts[entry.workout_id] ?? 0) + 1;
+    }
+    return counts;
+  }, [schedule]);
+
   return (
     <div className="min-h-screen bg-white text-zinc-900">
       <div className="max-w-3xl mx-auto px-4 pt-5 pb-8">
@@ -363,6 +378,7 @@ export function WorkoutsContent() {
                 <WorkoutPill
                   key={w.id}
                   workout={w}
+                  count={usageCounts[w.id] ?? 0}
                   draggable
                   onPointerDown={(e) => handlePointerDown(e, w)}
                   onPointerMove={handlePointerMove}
@@ -432,6 +448,11 @@ export function WorkoutsContent() {
             }}
           >
             {drag.workout.title}
+            {usageCounts[drag.workout.id] > 0 && (
+              <span className="ml-1 text-zinc-700/80">
+                ({usageCounts[drag.workout.id]})
+              </span>
+            )}
           </span>
         </div>
       )}
@@ -441,6 +462,7 @@ export function WorkoutsContent() {
 
 function WorkoutPill({
   workout,
+  count = 0,
   draggable,
   onPointerDown,
   onPointerMove,
@@ -449,6 +471,7 @@ function WorkoutPill({
   dimmed,
 }: {
   workout: Workout;
+  count?: number;
   draggable?: boolean;
   onPointerDown?: (e: React.PointerEvent) => void;
   onPointerMove?: (e: React.PointerEvent) => void;
@@ -466,7 +489,12 @@ function WorkoutPill({
       } ${dimmed ? "opacity-40" : ""}`}
       style={{ backgroundColor: workout.color }}
     >
-      <span>{workout.title}</span>
+      <span>
+        {workout.title}
+        {count > 0 && (
+          <span className="ml-1 text-zinc-700/80">({count})</span>
+        )}
+      </span>
       {onDelete && (
         <button
           type="button"
