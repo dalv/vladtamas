@@ -15,33 +15,33 @@ import {
 
 // A curated palette of ~17 commonly-used label colors.
 const COLORS: { name: string; hex: string }[] = [
-  { name: "Red", hex: "#ef4444" },
-  { name: "Orange", hex: "#f97316" },
+  { name: "Merah", hex: "#ef4444" },
+  { name: "Jingga", hex: "#f97316" },
   { name: "Amber", hex: "#f59e0b" },
-  { name: "Yellow", hex: "#eab308" },
-  { name: "Lime", hex: "#84cc16" },
-  { name: "Green", hex: "#22c55e" },
-  { name: "Emerald", hex: "#10b981" },
-  { name: "Teal", hex: "#14b8a6" },
-  { name: "Cyan", hex: "#06b6d4" },
-  { name: "Sky", hex: "#0ea5e9" },
-  { name: "Blue", hex: "#3b82f6" },
-  { name: "Indigo", hex: "#6366f1" },
+  { name: "Kuning", hex: "#eab308" },
+  { name: "Hijau Limau", hex: "#84cc16" },
+  { name: "Hijau", hex: "#22c55e" },
+  { name: "Zamrud", hex: "#10b981" },
+  { name: "Tosca", hex: "#14b8a6" },
+  { name: "Sian", hex: "#06b6d4" },
+  { name: "Biru Langit", hex: "#0ea5e9" },
+  { name: "Biru", hex: "#3b82f6" },
+  { name: "Nila", hex: "#6366f1" },
   { name: "Violet", hex: "#8b5cf6" },
-  { name: "Purple", hex: "#a855f7" },
+  { name: "Ungu", hex: "#a855f7" },
   { name: "Fuchsia", hex: "#d946ef" },
-  { name: "Pink", hex: "#ec4899" },
-  { name: "Rose", hex: "#f43f5e" },
+  { name: "Merah Muda", hex: "#ec4899" },
+  { name: "Mawar", hex: "#f43f5e" },
 ];
 
 const DAYS = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
+  "Senin",
+  "Selasa",
+  "Rabu",
+  "Kamis",
+  "Jumat",
+  "Sabtu",
+  "Minggu",
 ];
 
 type DragState = {
@@ -111,7 +111,7 @@ export function WorkoutsContent() {
       .single();
     if (error) {
       console.error("Error creating workout:", error);
-      alert("Could not create workout. Please try again.");
+      alert("Gagal membuat latihan. Silakan coba lagi.");
     } else if (data) {
       setWorkouts((prev) => [...prev, data]);
       setNewTitle("");
@@ -123,7 +123,7 @@ export function WorkoutsContent() {
   const handleDeleteWorkout = async (id: string) => {
     if (
       !confirm(
-        "Delete this workout? It will also be removed from your weekly schedule."
+        "Hapus latihan ini? Latihan juga akan dihapus dari jadwal mingguan Anda."
       )
     )
       return;
@@ -254,7 +254,7 @@ export function WorkoutsContent() {
             ← vladtamas.com
           </a>
           <h1 className="text-lg font-semibold tracking-tight">
-            Workouts <span className="ml-1">💪</span>
+            Latihan <span className="ml-1">💪</span>
           </h1>
         </div>
 
@@ -269,7 +269,7 @@ export function WorkoutsContent() {
               type="button"
               onClick={() => setColorPickerOpen((o) => !o)}
               className="h-9 w-9 rounded-lg border border-zinc-300 bg-white flex items-center justify-center hover:border-zinc-400 transition"
-              aria-label="Pick color"
+              aria-label="Pilih warna"
             >
               <span
                 className="h-5 w-5 rounded-full border border-black/20"
@@ -303,7 +303,7 @@ export function WorkoutsContent() {
             type="text"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
-            placeholder="Add a workout (e.g. Back squat)"
+            placeholder="Tambah latihan (mis. Back squat)"
             className="flex-1 min-w-0 h-9 px-3 bg-white border border-zinc-300 rounded-lg
                        text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none
                        focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition"
@@ -315,7 +315,7 @@ export function WorkoutsContent() {
             className="h-9 px-3 bg-emerald-600 hover:bg-emerald-500 rounded-lg
                        font-semibold text-sm text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {creating ? "…" : "Create"}
+            {creating ? "…" : "Buat"}
           </button>
         </form>
 
@@ -327,7 +327,7 @@ export function WorkoutsContent() {
             </div>
           ) : workouts.length === 0 ? (
             <p className="text-zinc-400 text-sm">
-              No workouts yet. Add your first one above.
+              Belum ada latihan. Tambahkan yang pertama di atas.
             </p>
           ) : (
             <div className="flex flex-wrap gap-2">
@@ -448,8 +448,8 @@ function WorkoutPill({
             onDelete();
           }}
           className="ml-0.5 h-5 w-5 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center text-white/90 transition"
-          aria-label={`Delete ${workout.title}`}
-          title="Delete workout"
+          aria-label={`Hapus ${workout.title}`}
+          title="Hapus latihan"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -488,8 +488,8 @@ function ScheduledPill({
         type="button"
         onClick={onRemove}
         className="ml-0.5 h-5 w-5 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center text-white/90 transition"
-        aria-label={`Remove ${workout.title} from schedule`}
-        title="Remove from day"
+        aria-label={`Hapus ${workout.title} dari jadwal`}
+        title="Hapus dari hari"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

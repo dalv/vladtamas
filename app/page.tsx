@@ -31,7 +31,7 @@ export default function HomePage() {
             href="/workouts"
             className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary/90 hover:gap-3"
           >
-            Workouts
+            Latihan
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

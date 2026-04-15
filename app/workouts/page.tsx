@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { WorkoutsContent } from "./content";
 
 export const metadata: Metadata = {
-  title: "Workouts | Vlad Tamas",
-  description: "Plan your weekly workouts",
+  title: "Latihan | Vlad Tamas",
+  description: "Rencanakan latihan mingguan Anda",
 };
 
 export default function WorkoutsPage() {
