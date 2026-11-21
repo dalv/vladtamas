@@ -185,7 +185,7 @@ img { display: block; }
 .pill--tall { min-height: 48px; padding: 0 24px; font-size: 15px; }
 
 .portrait {
-  width: 152px;
+  width: 184px;
   aspect-ratio: 1;
   margin-bottom: 28px;
 }
@@ -572,7 +572,7 @@ img { display: block; }
   .nav__links { display: none; }
 
   .hero { min-height: auto; padding-block: calc(var(--nav-h) + 2.5rem) 5rem; }
-  .portrait { width: 120px; margin-bottom: 22px; }
+  .portrait { width: 140px; margin-bottom: 22px; }
   .hero__h { margin-top: 18px; font-size: clamp(2.9rem, 13.5vw, 4.2rem); }
 
   .case__stage { align-items: flex-start; }

@@ -38,9 +38,9 @@ export default function HomePage() {
             <div className="portrait">
               <img
                 className="portrait__img"
-                src="/vlad-hero.webp"
-                width={360}
-                height={360}
+                src="/vlad-hero-420.webp"
+                width={420}
+                height={420}
                 alt="Vlad Tamas, smiling slightly, resting his chin on his hand."
                 fetchPriority="high"
               />
