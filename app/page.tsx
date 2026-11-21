@@ -2,13 +2,8 @@ import Motion from './motion'
 
 const EMAIL = 'vlad.tamas@gmail.com'
 
-function Mark() {
-  return (
-    <svg className="mark" viewBox="0 0 32 32" aria-hidden="true">
-      <circle cx="16" cy="16" r="15" fill="#f4f5f7" />
-      <path d="M8.5 10.5l4.2 11 4.2-11M17.6 10.5h6.4M20.8 10.5v11" fill="none" stroke="#050506" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  )
+function Avatar() {
+  return <img className="avatar" src="/vlad-avatar.webp" width={128} height={128} alt="" />
 }
 
 export default function HomePage() {
@@ -20,7 +15,7 @@ export default function HomePage() {
       <header className="nav" data-nav>
         <div className="nav__inner">
           <a className="nav__brand" href="#top" aria-label="Vlad Tamas, back to top">
-            <Mark />
+            <Avatar />
             <span>Vlad Tamas</span>
           </a>
           <nav className="nav__links" aria-label="Sections">
@@ -33,24 +28,38 @@ export default function HomePage() {
       </header>
 
       <main id="top">
-        {/* 1 · Hero: dusk gradient, centred claim, the work rising from the horizon. */}
+        {/* 1 · Hero: a personal hello, split with a round portrait in dusk light. */}
         <section className="hero" data-sc-act="flow">
           <div className="hero__sky" data-sc-parallax="0.8" aria-hidden="true" />
-          <div className="hero__glow" data-sc-parallax="-0.4" aria-hidden="true" />
-          <div className="hero__copy sc-wrap" data-sc-in data-sc-stagger="70">
-            <p className="badge"><i />Web and mobile developer</p>
-            <h1 className="hero__h">
-              Websites and apps that feel right on every screen.
-            </h1>
-            <p className="hero__sub">
-              I&apos;m Vlad Tamas. I design, build and launch products for the web and for phones.
-            </p>
-            <p><a className="pill pill--light" href="#work">See the work</a></p>
-          </div>
-          <div className="hero__frame" data-sc-parallax="-1.6" aria-hidden="true">
-            <div className="browser">
-              <div className="browser__bar"><i /><i /><i /><span>acrovents.com</span></div>
-              <img src="/work/acro-desktop.webp" width={1800} height={1125} alt="" />
+          <div className="hero__inner sc-wrap">
+            <div className="hero__copy" data-sc-in data-sc-stagger="80">
+              <p className="badge"><i />Web and mobile developer</p>
+              <h1 className="hero__h">
+                Hi, I&apos;m <strong>Vlad</strong><span className="hero__dot">.</span>
+              </h1>
+              <p className="hero__sub">
+                I design and build websites and mobile apps, and I care about how they feel
+                in your hand. Nice to meet you.
+              </p>
+              <p className="hero__actions">
+                <a className="pill pill--light" href="#work">See my work</a>
+                <a className="pill pill--ghost pill--tall" href={`mailto:${EMAIL}`}>Get in touch</a>
+              </p>
+            </div>
+
+            <div className="portrait">
+              <div className="portrait__band" data-sc-parallax="1.2" aria-hidden="true" />
+              <div className="portrait__glow" aria-hidden="true" />
+              <div className="portrait__ring" data-sc-parallax="-0.5">
+                <img
+                  className="portrait__img"
+                  src="/vlad.webp"
+                  width={900}
+                  height={900}
+                  alt="Vlad Tamas, smiling slightly, resting his chin on his hand."
+                  fetchPriority="high"
+                />
+              </div>
             </div>
           </div>
           <div className="hero__fade" aria-hidden="true" />
@@ -208,7 +217,7 @@ export default function HomePage() {
 
             <footer className="foot">
               <div className="foot__brand">
-                <a className="nav__brand" href="#top"><Mark /><span>Vlad Tamas</span></a>
+                <a className="nav__brand" href="#top"><Avatar /><span>Vlad Tamas</span></a>
                 <p>Web and mobile developer, building for every screen.</p>
               </div>
               <div className="foot__col">
