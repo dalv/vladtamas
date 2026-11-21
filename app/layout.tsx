@@ -29,10 +29,6 @@ export const metadata: Metadata = {
     url: 'https://vladtamas.com',
     type: 'website',
   },
-  icons: {
-    icon:
-      "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23f4f5f7'/><path d='M8 9l5 14 5-14M17 9h8M21 9v14' stroke='%23050506' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>",
-  },
 }
 
 export const viewport: Viewport = {
