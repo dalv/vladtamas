@@ -37,3 +37,6 @@ next-env.d.ts
 /scrollcraft/builds/*/lab
 /scrollcraft/builds/*/raw
 /scrollcraft/builds/*/package*.json
+
+# original source photo (web crops live in public/)
+/Vlad-shirt.JPG
