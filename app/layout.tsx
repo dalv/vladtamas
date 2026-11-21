@@ -1,19 +1,19 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Instrument_Sans } from 'next/font/google'
+import { Montserrat, Roboto_Mono } from 'next/font/google'
 import './scrollcraft.css'
 import './globals.css'
 
-const display = Instrument_Sans({
+const sans = Montserrat({
   subsets: ['latin'],
-  weight: ['500', '600'],
-  variable: '--font-display',
+  weight: ['400', '500', '600'],
+  variable: '--font-sans',
   display: 'swap',
 })
 
-const text = Geist({
+const mono = Roboto_Mono({
   subsets: ['latin'],
   weight: ['400', '500'],
-  variable: '--font-text',
+  variable: '--font-mono',
   display: 'swap',
 })
 
@@ -31,18 +31,18 @@ export const metadata: Metadata = {
   },
   icons: {
     icon:
-      "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23121418'/><path d='M8 9l5 14 5-14M17 9h8M21 9v14' stroke='%23ECEDEF' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+      "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23f4f5f7'/><path d='M8 9l5 14 5-14M17 9h8M21 9v14' stroke='%23050506' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>",
   },
 }
 
 export const viewport: Viewport = {
-  themeColor: '#ECEDEF',
+  themeColor: '#050506',
   viewportFit: 'cover',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${text.variable}`}>
+    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
       <body>{children}</body>
     </html>
   )

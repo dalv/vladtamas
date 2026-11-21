@@ -77,3 +77,14 @@ phone, driven from `--sc-p`. The desktop capture shrinks with it, then
 crossfades to the true mobile capture (the reflow), while a margin readout
 counts the real capture widths 1440 to 390. At rest the phone offers "Try it
 live", which swaps in the real acrovents.com in an iframe.
+
+## Revision 2 (2026-11-21): restyled after a user reference
+
+Vlad asked to bring in the look of https://aiautomationsociety.ai. Adopted its
+style language only (no artwork, logo or copy): near-black ground (#050506),
+dusk-blue gradients, Montserrat with Roboto Mono labels, pill badges with a
+blue dot, two-tone headings, sticky blurred pill nav, bordered dark cards in a
+bento, a bright gradient contact panel and a column footer. The editorial
+title page, intertitle wipe and margin folio were replaced by a centred hero
+with the work rising from the horizon. The fold (signature move) is unchanged
+and now sits in a dusk-lit panel.

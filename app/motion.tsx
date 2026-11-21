@@ -37,9 +37,9 @@ export default function Motion() {
     const readout = document.querySelector<HTMLElement>('[data-readout]')
     const live = document.querySelector<HTMLElement>('[data-live]')
     const toggle = document.querySelector<HTMLButtonElement>('[data-live-toggle]')
-    const folioNum = document.querySelector<HTMLElement>('[data-folio-num]')
-    const folioTitle = document.querySelector<HTMLElement>('[data-folio-title]')
-    const chapters = Array.from(document.querySelectorAll<HTMLElement>('[data-chapter]'))
+    const nav = document.querySelector<HTMLElement>('[data-nav]')
+    const links = Array.from(document.querySelectorAll<HTMLElement>('[data-nav-link]'))
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-section]'))
 
     /* ---- The fold: geometry is measured once per resize, in px. ---------- */
     let geo = { W: 0, Hd: 0, Hp: 0, Wp: 0, bar: 32 }
@@ -49,7 +49,7 @@ export default function Motion() {
       const W = fold.clientWidth
       const bar = phone ? 22 : 32
       const Hd = W * 0.625 + bar
-      const target = phone ? Math.min(innerHeight * 0.5, innerHeight - 370) : innerHeight * 0.76
+      const target = phone ? Math.min(innerHeight * 0.46, innerHeight - (innerHeight < 700 ? 440 : 400)) : innerHeight * 0.64
       const Hp = Math.max(Hd + (phone ? 24 : 48), Math.min(target, W * (phone ? 1.4 : 1.05)))
       const Wp = Math.min(W, Hp * 0.47)
       geo = { W, Hd, Hp, Wp, bar }
@@ -75,7 +75,8 @@ export default function Motion() {
     }
 
     let lastQ = -1
-    let lastChapter = ''
+    let lastSection = '-'
+    let lastScrolled: boolean | null = null
     const frame = () => {
       if (!alive) return
       raf = requestAnimationFrame(frame)
@@ -96,17 +97,23 @@ export default function Motion() {
         }
       }
 
-      // Folio follows whichever chapter holds the viewport's upper third.
-      const y = innerHeight * 0.3
-      let current = chapters[0]
-      for (const c of chapters) if (c.getBoundingClientRect().top <= y) current = c
-      const key = current?.dataset.chapter ?? ''
-      if (key !== lastChapter) {
-        lastChapter = key
-        const [num, title] = key.split('|')
-        if (folioNum) folioNum.textContent = num
-        if (folioTitle) folioTitle.textContent = title
-        document.documentElement.dataset.ground = current?.dataset.ground ?? 'light'
+      // Nav: solid once the page has moved; current section highlighted.
+      const scrolled = scrollY > 12
+      if (scrolled !== lastScrolled) {
+        lastScrolled = scrolled
+        nav?.classList.toggle('is-scrolled', scrolled)
+      }
+      const y = innerHeight * 0.4
+      let current = ''
+      for (const sec of sections) if (sec.getBoundingClientRect().top <= y) current = sec.dataset.section ?? ''
+      if (current !== lastSection) {
+        lastSection = current
+        for (const l of links) {
+          const on = l.dataset.navLink === current
+          l.classList.toggle('is-current', on)
+          if (on) l.setAttribute('aria-current', 'true')
+          else l.removeAttribute('aria-current')
+        }
       }
     }
 
