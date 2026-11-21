@@ -395,6 +395,87 @@ img { display: block; }
 .fold:not(.is-phone) .btn--live { display: none; }
 .fold.is-phone .fold__note { display: none; }
 
+/* ------------------------------------------------------ dualcast (pan) -- */
+.app { --tile-h: min(66svh, 620px); background: var(--sc-canvas); }
+.app__stage { height: 100svh; overflow: hidden; display: flex; align-items: center; }
+.app__glow {
+  position: absolute;
+  inset: 40% -10% -20%;
+  background: radial-gradient(50% 60% at 50% 100%, rgb(70 150 215 / 0.28), transparent 72%);
+  pointer-events: none;
+}
+.app__rail {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  width: max-content;
+  padding: var(--nav-h) var(--sc-gutter) 0;
+}
+.app__lead { flex: none; width: min(440px, 84vw); margin-right: clamp(1.5rem, 4vw, 4rem); }
+.app__head { margin-top: 22px; display: flex; align-items: center; gap: 18px; }
+.app__icon {
+  width: 88px;
+  height: 88px;
+  flex: none;
+  border-radius: 22.5%;
+  box-shadow: 0 12px 28px -10px rgb(40 140 220 / 0.55), 0 0 0 1px rgb(255 255 255 / 0.1);
+}
+.app__name { font-weight: 500; font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1.15; letter-spacing: -0.035em; text-wrap: balance; }
+.app__sub { margin-top: 6px; font-size: 15px; color: var(--sc-ink-soft); }
+.app__p { margin-top: 22px; max-width: 40ch; font-size: 16px; line-height: 1.6; color: var(--sc-ink-soft); text-wrap: pretty; }
+.appstore {
+  margin-top: 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 54px;
+  padding: 0 22px 0 16px;
+  border-radius: 12px;
+  background: #000;
+  color: #fff;
+  border: 1px solid rgb(255 255 255 / 0.3);
+  text-decoration: none;
+  transition: border-color 160ms var(--sc-ease-out), transform 120ms var(--sc-ease-out);
+}
+.appstore:active { transform: translateY(1px); }
+@media (hover: hover) and (pointer: fine) { .appstore:hover { border-color: rgb(255 255 255 / 0.7); } }
+.appstore span { display: flex; flex-direction: column; font-weight: 600; font-size: 20px; line-height: 1; letter-spacing: -0.02em; }
+.appstore small { font-weight: 500; font-size: 11px; letter-spacing: 0.01em; margin-bottom: 3px; }
+.facts--app { margin-top: 30px; }
+
+.app__set, .app__shot { flex: none; margin: 0; }
+.app__pano { display: flex; gap: 10px; }
+.app__pano img, .app__shot img {
+  height: var(--tile-h);
+  width: auto;
+  border-radius: 22px;
+  border: 1px solid var(--sc-hairline);
+  box-shadow: var(--sc-e3);
+}
+.app__set figcaption, .app__shot figcaption {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  font-size: 14px;
+  color: var(--sc-ink-soft);
+}
+.app__shot figcaption { max-width: calc(var(--tile-h) * 0.462); }
+.app__n { font-family: var(--sc-font-mono); font-size: 12px; color: var(--sc-accent); }
+.app__close {
+  flex: none;
+  width: min(400px, 84vw);
+  margin-left: clamp(1.5rem, 4vw, 4rem);
+  padding: clamp(24px, 2.6vw, 34px);
+  border-radius: var(--r-card);
+  background: var(--sc-surface);
+  border: 1px solid var(--sc-hairline);
+}
+.app__close .steps--app { padding: 0; margin-top: 18px; }
+.steps--app li { padding-block: 14px; }
+.app__note { margin-top: 18px; font-size: 14px; line-height: 1.6; color: var(--sc-ink-soft); }
+
 /* ----------------------------------------------------------- approach -- */
 .approach { padding-block: clamp(5rem, 10vw, 9rem) clamp(4rem, 8vw, 7rem); }
 .split {
@@ -549,6 +630,19 @@ img { display: block; }
   .case__copy .duo { font-size: 1.4rem; }
   .facts { gap: 8px 16px; }
   .facts div { padding-top: 8px; }
+}
+@media (max-width: 859px) {
+  .app { --tile-h: min(54svh, 460px); }
+  .app__icon { width: 64px; height: 64px; }
+  .app__p { font-size: 15px; margin-top: 16px; }
+  .appstore { margin-top: 18px; }
+  .facts--app { margin-top: 20px; gap: 10px 16px; }
+}
+@media (max-width: 859px) and (max-height: 760px) {
+  .facts--app, .app__note { display: none; }
+  .app__close .steps--app { margin-top: 8px; }
+  .steps--app li { padding-block: 9px; gap: 12px; }
+  .steps--app span:last-child { font-size: 13px; }
 }
 @media (max-width: 400px) {
   .nav .pill { padding: 0 14px; }

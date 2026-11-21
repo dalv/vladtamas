@@ -2,6 +2,9 @@ import Motion from './motion'
 
 const EMAIL = 'vlad.tamas@gmail.com'
 
+// Placeholder until DualCast is live on the App Store: swap in the real listing URL.
+const APP_STORE_URL = 'https://apps.apple.com/app/dualcast-instant-replay/id0000000000'
+
 function Avatar() {
   return <img className="avatar" src="/vlad-avatar.webp" width={128} height={128} alt="" />
 }
@@ -135,7 +138,71 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 3 · Approach: split header, then an asymmetric bento of what I build. */}
+        {/* 3 · DualCast: an App Store style listing that travels sideways. */}
+        <section id="dualcast" className="app" data-sc-act="pan" data-sc-span="4" data-section="work">
+          <div data-sc-stage className="app__stage">
+            <div className="app__glow" aria-hidden="true" />
+            <div className="app__rail" data-sc-pan="0.04">
+              <article className="app__lead">
+                <p className="badge"><i />Selected work · iPhone app</p>
+                <div className="app__head">
+                  <img className="app__icon" src="/work/dualcast/icon.webp" width={256} height={256} alt="DualCast Instant Replay app icon: a white figure arching back inside a circular replay arrow on blue." />
+                  <div>
+                    <h2 className="app__name">DualCast Instant Replay</h2>
+                    <p className="app__sub">Instant replay for athletes</p>
+                  </div>
+                </div>
+                <p className="app__p">
+                  Instant video feedback for movement practice. One iPhone broadcasts from a
+                  tripod, a second plays it back on a 1 to 30 second delay, so you see what you
+                  just did without stopping.
+                </p>
+                <a className="appstore" href={APP_STORE_URL} target="_blank" rel="noopener">
+                  <svg viewBox="0 0 384 512" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" /></svg>
+                  <span><small>Download on the</small>App Store</span>
+                </a>
+                <dl className="facts facts--app">
+                  <div><dt>Platform</dt><dd>iPhone</dd></div>
+                  <div><dt>Year</dt><dd>2026</dd></div>
+                  <div><dt>Role</dt><dd>Design and development</dd></div>
+                  <div><dt>Built with</dt><dd>SwiftUI, AVFoundation</dd></div>
+                </dl>
+              </article>
+
+              <figure className="app__set">
+                <div className="app__pano">
+                  <img src="/work/dualcast/screen-1.webp" width={720} height={1558} alt="Broadcast screen: start broadcasting, choose 30 or 120 frames per second, optionally save the recording." loading="lazy" />
+                  <img src="/work/dualcast/screen-2.webp" width={720} height={1558} alt="A phone on a tripod films someone kicking up into a handstand by a pool." loading="lazy" />
+                  <img src="/work/dualcast/screen-3.webp" width={720} height={1558} alt="Watch screen looking for broadcasters, with a stream delay slider set to 5 seconds." loading="lazy" />
+                </div>
+                <figcaption><span className="app__n">01</span>Broadcast from one phone, watch from another.</figcaption>
+              </figure>
+
+              <figure className="app__shot">
+                <img src="/work/dualcast/screen-4.webp" width={720} height={1558} alt="Analysis mode: a frozen frame of a floor movement with a trim timeline, play, cut and save controls." loading="lazy" />
+                <figcaption><span className="app__n">02</span>Freeze, scrub and trim the moment.</figcaption>
+              </figure>
+
+              <figure className="app__shot">
+                <img src="/work/dualcast/screen-5.webp" width={720} height={1558} alt="Live delayed feed of a handstand with a live indicator, timer and record button." loading="lazy" />
+                <figcaption><span className="app__n">03</span>Train while the replay runs behind you.</figcaption>
+              </figure>
+
+              <article className="app__close">
+                <p className="card__tag"><i />How it works</p>
+                <ol className="steps steps--app">
+                  <li><span className="steps__n">01</span><span><b>Broadcast</b>Put one iPhone on a tripod and tap Broadcast.</span></li>
+                  <li><span className="steps__n">02</span><span><b>Watch</b>On a second iPhone, tap Watch and connect.</span></li>
+                  <li><span className="steps__n">03</span><span><b>Train</b>See yourself on a delay of 1 to 30 seconds.</span></li>
+                  <li><span className="steps__n">04</span><span><b>Analyse</b>Long-press to freeze, go frame by frame, zoom up to 5x, save the clip.</span></li>
+                </ol>
+                <p className="app__note">No accounts, no cloud, no subscriptions. Everything stays on the local network between your two phones.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* 4 · Approach: split header, then an asymmetric bento of what I build. */}
         <section id="approach" className="approach" data-sc-act="flow" data-section="approach">
           <div className="sc-wrap">
             <div className="split" data-sc-in data-sc-stagger="60">
@@ -198,7 +265,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 4 · Contact: the brightest moment on the page, then the footer. */}
+        {/* 5 · Contact: the brightest moment on the page, then the footer. */}
         <section id="contact" className="contact" data-sc-act="flow" data-section="contact">
           <div className="sc-wrap">
             <div className="cta panel panel--bright" data-sc-reveal="up" data-sc-reveal-at="0.04 0.34">
@@ -223,6 +290,7 @@ export default function HomePage() {
               <div className="foot__col">
                 <p className="foot__h">Work</p>
                 <a href="#work">Acro Events</a>
+                <a href="#dualcast">DualCast Instant Replay</a>
                 <a href="https://www.acrovents.com" target="_blank" rel="noopener">acrovents.com</a>
               </div>
               <div className="foot__col">
