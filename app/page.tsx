@@ -51,18 +51,14 @@ export default function HomePage() {
             </div>
 
             <div className="portrait">
-              <div className="portrait__band" data-sc-parallax="1.2" aria-hidden="true" />
-              <div className="portrait__glow" aria-hidden="true" />
-              <div className="portrait__ring" data-sc-parallax="-0.5">
-                <img
-                  className="portrait__img"
-                  src="/vlad.webp"
-                  width={900}
-                  height={900}
-                  alt="Vlad Tamas, smiling slightly, resting his chin on his hand."
-                  fetchPriority="high"
-                />
-              </div>
+              <img
+                className="portrait__img"
+                src="/vlad.webp"
+                width={900}
+                height={900}
+                alt="Vlad Tamas, smiling slightly, resting his chin on his hand."
+                fetchPriority="high"
+              />
             </div>
           </div>
           <div className="hero__fade" aria-hidden="true" />
