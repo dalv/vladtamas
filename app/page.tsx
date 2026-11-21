@@ -6,7 +6,7 @@ const EMAIL = 'vlad.tamas@gmail.com'
 const APP_STORE_URL = 'https://apps.apple.com/app/dualcast-instant-replay/id0000000000'
 
 function Avatar() {
-  return <img className="avatar" src="/vlad-avatar-wide.webp" width={160} height={160} alt="" />
+  return <img className="avatar" src="/vlad-avatar-mid.webp" width={160} height={160} alt="" />
 }
 
 export default function HomePage() {
