@@ -31,3 +31,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# scrollcraft build scratch (screenshots, harness deps)
+/scrollcraft/builds/*/node_modules
+/scrollcraft/builds/*/lab
+/scrollcraft/builds/*/raw
+/scrollcraft/builds/*/package*.json
