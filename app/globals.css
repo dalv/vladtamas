@@ -147,47 +147,47 @@ img { display: block; }
 .hero {
   position: relative;
   overflow: hidden;
-  min-height: 100svh;
+  min-height: 88svh;
   display: flex;
   align-items: center;
-  padding-block: calc(var(--nav-h) + 3rem) 3rem;
+  padding-block: calc(var(--nav-h) + 3rem) 4rem;
 }
 .hero__sky { position: absolute; inset: -12% 0 0; background: var(--dusk); }
 .hero__inner {
   position: relative;
   z-index: 2;
   width: 100%;
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: clamp(2rem, 5vw, 5rem);
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
 }
+.hero__copy { display: flex; flex-direction: column; align-items: center; }
 .hero__h {
   margin-top: 24px;
   font-family: var(--sc-font-display);
   font-weight: 400;
-  font-size: clamp(3.2rem, 7.4vw, 6.6rem);
+  font-size: clamp(3.2rem, 8.4vw, 8rem);
   line-height: 1;
   letter-spacing: -0.055em;
-  margin-left: -0.04em;
 }
 .hero__h strong { font-weight: 600; }
 .hero__dot { color: var(--sc-accent); }
 .hero__sub {
   margin-top: 26px;
-  max-width: 34ch;
-  font-size: clamp(17px, 1.35vw, 19px);
+  max-width: 44ch;
+  font-size: clamp(16px, 1.35vw, 19px);
   line-height: 1.6;
   color: rgb(244 245 247 / 0.8);
-  text-wrap: pretty;
+  text-wrap: balance;
 }
-.hero__actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
+.hero__actions { margin-top: 36px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 .pill--tall { min-height: 48px; padding: 0 24px; font-size: 15px; }
 
 .portrait {
-  justify-self: center;
-  width: min(320px, 25vw);
+  width: 152px;
   aspect-ratio: 1;
+  margin-bottom: 28px;
 }
 .portrait__img {
   width: 100%;
@@ -572,10 +572,8 @@ img { display: block; }
   .nav__links { display: none; }
 
   .hero { min-height: auto; padding-block: calc(var(--nav-h) + 2.5rem) 5rem; }
-  .hero__inner { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
-  .portrait { order: -1; justify-self: start; width: min(150px, 40vw); }
-  .hero__h { margin-top: 18px; font-size: clamp(3rem, 14vw, 4.2rem); }
-  .hero__sub { font-size: 16px; }
+  .portrait { width: 120px; margin-bottom: 22px; }
+  .hero__h { margin-top: 18px; font-size: clamp(2.9rem, 13.5vw, 4.2rem); }
 
   .case__stage { align-items: flex-start; }
   .case__grid { grid-template-columns: minmax(0, 1fr); gap: 14px; padding-top: calc(var(--nav-h) + 8px); }
@@ -627,3 +625,4 @@ img { display: block; }
 @media (prefers-reduced-motion: reduce) {
   .fold__desk, .fold__phone { transform: none; }
 }
+

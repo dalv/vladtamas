@@ -31,10 +31,21 @@ export default function HomePage() {
       </header>
 
       <main id="top">
-        {/* 1 · Hero: a personal hello, split with a round portrait in dusk light. */}
+        {/* 1 · Hero: a personal hello, centred under a small round portrait. */}
         <section className="hero" data-sc-act="flow">
           <div className="hero__sky" data-sc-parallax="0.8" aria-hidden="true" />
           <div className="hero__inner sc-wrap">
+            <div className="portrait">
+              <img
+                className="portrait__img"
+                src="/vlad-hero.webp"
+                width={360}
+                height={360}
+                alt="Vlad Tamas, smiling slightly, resting his chin on his hand."
+                fetchPriority="high"
+              />
+            </div>
+
             <div className="hero__copy" data-sc-in data-sc-stagger="80">
               <p className="badge"><i />Web and mobile developer</p>
               <h1 className="hero__h">
@@ -48,17 +59,6 @@ export default function HomePage() {
                 <a className="pill pill--light" href="#work">See my work</a>
                 <a className="pill pill--ghost pill--tall" href={`mailto:${EMAIL}`}>Get in touch</a>
               </p>
-            </div>
-
-            <div className="portrait">
-              <img
-                className="portrait__img"
-                src="/vlad.webp"
-                width={900}
-                height={900}
-                alt="Vlad Tamas, smiling slightly, resting his chin on his hand."
-                fetchPriority="high"
-              />
             </div>
           </div>
           <div className="hero__fade" aria-hidden="true" />
