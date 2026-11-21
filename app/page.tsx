@@ -52,8 +52,8 @@ export default function HomePage() {
                 Hi, I&apos;m <strong>Vlad</strong><span className="hero__dot">.</span>
               </h1>
               <p className="hero__sub">
-                I design and build websites and mobile apps, and I care about how they feel
-                in your hand. Nice to meet you.
+                I design and build websites and mobile apps that are simple, fast and a
+                pleasure to use. Nice to meet you.
               </p>
               <p className="hero__actions">
                 <a className="pill pill--light" href="#work">See my work</a>
@@ -240,7 +240,7 @@ export default function HomePage() {
                 </div>
                 <div className="card__text">
                   <p className="card__tag"><i />Mobile</p>
-                  <h3 className="card__h">At home under a thumb.</h3>
+                  <h3 className="card__h">Made for the phone in your pocket.</h3>
                   <p className="card__p">Apps and mobile-first interfaces with tap targets, type and layout made for a phone.</p>
                 </div>
               </article>
