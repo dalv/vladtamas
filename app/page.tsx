@@ -45,7 +45,7 @@ export default function HomePage() {
             </div>
 
             <div className="hero__copy" data-sc-in data-sc-stagger="80">
-              <p className="badge"><i />Web and mobile developer</p>
+              <p className="badge"><i />AI automation, web and mobile</p>
               <h1 className="hero__h">
                 Hi, I&apos;m <strong>Vlad</strong><span className="hero__dot">.</span>
               </h1>
@@ -277,7 +277,7 @@ export default function HomePage() {
             <footer className="foot">
               <div className="foot__brand">
                 <a className="nav__brand" href="#top"><Avatar /><span>Vlad Tamas</span></a>
-                <p>Web and mobile developer, building for every screen.</p>
+                <p>Building AI automations, websites and mobile apps.</p>
               </div>
               <div className="foot__col">
                 <p className="foot__h">Work</p>

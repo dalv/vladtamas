@@ -18,14 +18,14 @@ const mono = Roboto_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Vlad Tamas · Web and mobile developer',
+  title: 'Vlad Tamas · AI automation, web and mobile',
   description:
-    'Vlad Tamas designs and builds websites and mobile apps that hold up on every screen.',
+    'Vlad Tamas builds AI automations, websites and mobile apps that are simple, fast and a pleasure to use.',
   metadataBase: new URL('https://vladtamas.com'),
   openGraph: {
-    title: 'Vlad Tamas · Web and mobile developer',
+    title: 'Vlad Tamas · AI automation, web and mobile',
     description:
-      'Websites and mobile apps that hold up on every screen. Selected work: Acro Events.',
+      'AI automations, websites and mobile apps. Selected work: Acro Events and DualCast Instant Replay.',
     url: 'https://vladtamas.com',
     type: 'website',
   },
