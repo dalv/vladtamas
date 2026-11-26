@@ -13,7 +13,6 @@ export default function HomePage() {
   return (
     <>
       <span data-sc-progress aria-hidden="true" />
-      <div className="sc-grain" aria-hidden="true" />
 
       <header className="nav" data-nav>
         <div className="nav__inner">
@@ -33,7 +32,6 @@ export default function HomePage() {
       <main id="top">
         {/* 1 · Hero: a personal hello, centred under a small round portrait. */}
         <section className="hero" data-sc-act="flow">
-          <div className="hero__sky" data-sc-parallax="0.8" aria-hidden="true" />
           <div className="hero__inner sc-wrap">
             <div className="portrait">
               <img
@@ -61,7 +59,6 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-          <div className="hero__fade" aria-hidden="true" />
         </section>
 
         {/* 2 · The work (peak): desktop folds into a phone under the scroll. */}
@@ -137,7 +134,6 @@ export default function HomePage() {
         {/* 3 · DualCast: an App Store style listing that travels sideways. */}
         <section id="dualcast" className="app" data-sc-act="pan" data-sc-span="4" data-section="work">
           <div data-sc-stage className="app__stage">
-            <div className="app__glow" aria-hidden="true" />
             <div className="app__rail" data-sc-pan="0.04">
               <article className="app__lead">
                 <p className="badge"><i />Selected work · iPhone app</p>

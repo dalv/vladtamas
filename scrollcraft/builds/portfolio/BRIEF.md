@@ -88,3 +88,12 @@ bento, a bright gradient contact panel and a column footer. The editorial
 title page, intertitle wipe and margin folio were replaced by a centred hero
 with the work rising from the horizon. The fold (signature move) is unchanged
 and now sits in a dusk-lit panel.
+
+## Revision 3 (2026-11-26): flat and light
+
+Vlad found the dark blue gradient look too much and asked for flatter and more
+modern. Removed every gradient, glow, grain layer and drop shadow; surfaces are
+now solid with 1px hairlines, 16px corners, a light neutral ground (#f6f6f7),
+white cards and one blue accent (#2563eb, deeper #1d4ed8 for the contact
+panel). Chosen over a dark-neutral flat alternative after a side-by-side
+mock. All colours live in one token block at the top of globals.css.
