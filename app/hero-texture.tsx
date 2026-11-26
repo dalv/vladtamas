@@ -14,6 +14,10 @@ const BLUE = [37, 99, 235]
 const INK = [17, 18, 20]
 const GAP = 20 // px between dots
 const R = 170 // cursor influence radius, px
+// How strongly dots react under the cursor (0 = not at all).
+const HOVER_GROW = 0.3 // extra radius, px (resting radius is 1px)
+const HOVER_ALPHA = 0.4 // extra opacity on top of the resting 0.14
+const HOVER_PUSH = 2 // px the dots ease away from the cursor
 const mix = (a: number[], b: number[], t: number) => a.map((v, i) => Math.round(v + (b[i] - v) * t))
 const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v))
 
@@ -52,12 +56,12 @@ export default function HeroTexture() {
           const dx = x - cur.x, dy = y - cur.y
           const dist = Math.sqrt(dx * dx + dy * dy)
           const k = cur.a * clamp(1 - dist / R) ** 2
-          const push = k * 5
+          const push = k * HOVER_PUSH
           const px = x + (dist ? (dx / dist) * push : 0)
           const py = y + (dist ? (dy / dist) * push : 0)
           const [r, g, b] = mix(INK, BLUE, k)
-          ctx.fillStyle = `rgb(${r} ${g} ${b} / ${0.14 + k * 0.75})`
-          ctx.beginPath(); ctx.arc(px, py, 1 + k * 1.6, 0, Math.PI * 2); ctx.fill()
+          ctx.fillStyle = `rgb(${r} ${g} ${b} / ${0.14 + k * HOVER_ALPHA})`
+          ctx.beginPath(); ctx.arc(px, py, 1 + k * HOVER_GROW, 0, Math.PI * 2); ctx.fill()
         }
       }
     }
