@@ -144,7 +144,7 @@ body { font-family: 'Inter', Arial, sans-serif; -webkit-font-smoothing: antialia
 </head>
 <body>
 <main class="stage" aria-roledescription="slide deck" aria-label="AI Automation Agency – Market Research Findings">
-<div class="canvas" id="canvas">
+<div class="canvas" id="deck-canvas">
 <section id="cover" class="dark" style="justify-content:space-between">
 <p class="eyebrow">Market research · November 2026</p>
 <div class="head" style="width:1400px">
@@ -341,19 +341,19 @@ body { font-family: 'Inter', Arial, sans-serif; -webkit-font-smoothing: antialia
 </section>
 </div>
 </main>
-<nav class="hud" id="hud" aria-label="Slide controls">
-<button id="prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-<span class="count" id="count" aria-live="polite"></span>
-<button id="next" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
-<button id="fs" aria-label="Toggle full screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button>
+<nav class="hud" id="deck-hud" aria-label="Slide controls">
+<button id="deck-prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+<span class="count" id="deck-count" aria-live="polite"></span>
+<button id="deck-next" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+<button id="deck-fs" aria-label="Toggle full screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button>
 </nav>
 <script>
 (() => {
-  const canvas = document.getElementById('canvas');
+  const canvas = document.getElementById('deck-canvas');
   const slides = [...canvas.children];
-  const count = document.getElementById('count');
-  const prev = document.getElementById('prev'), next = document.getElementById('next');
-  const hud = document.getElementById('hud');
+  const count = document.getElementById('deck-count');
+  const prev = document.getElementById('deck-prev'), next = document.getElementById('deck-next');
+  const hud = document.getElementById('deck-hud');
   let i = 0;
   const fit = () => {
     const k = Math.min(innerWidth / 1920, innerHeight / 1080);
@@ -377,7 +377,7 @@ body { font-family: 'Inter', Arial, sans-serif; -webkit-font-smoothing: antialia
   };
   prev.onclick = () => show(i - 1);
   next.onclick = () => show(i + 1);
-  document.getElementById('fs').onclick = () => {
+  document.getElementById('deck-fs').onclick = () => {
     if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen?.();
   };
   addEventListener('keydown', e => {
@@ -386,7 +386,7 @@ body { font-family: 'Inter', Arial, sans-serif; -webkit-font-smoothing: antialia
     else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); show(i - 1); }
     else if (e.key === 'Home') show(0);
     else if (e.key === 'End') show(slides.length - 1);
-    else if (e.key === 'f') document.getElementById('fs').click();
+    else if (e.key === 'f') document.getElementById('deck-fs').click();
   });
   document.querySelector('.stage').addEventListener('click', e => {
     if (e.target.closest('a')) return;
