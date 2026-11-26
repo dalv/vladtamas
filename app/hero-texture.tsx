@@ -15,9 +15,9 @@ const INK = [17, 18, 20]
 const GAP = 20 // px between dots
 const R = 170 // cursor influence radius, px
 // How strongly dots react under the cursor (0 = not at all).
-const HOVER_GROW = 0.3 // extra radius, px (resting radius is 1px)
-const HOVER_ALPHA = 0.4 // extra opacity on top of the resting 0.14
-const HOVER_PUSH = 2 // px the dots ease away from the cursor
+const HOVER_GROW = 0.75 // extra radius, px (resting radius is 1px)
+const HOVER_ALPHA = 0.52 // extra opacity on top of the resting 0.14
+const HOVER_PUSH = 3 // px the dots ease away from the cursor
 const mix = (a: number[], b: number[], t: number) => a.map((v, i) => Math.round(v + (b[i] - v) * t))
 const clamp = (v: number, a = 0, b = 1) => Math.min(b, Math.max(a, v))
 
