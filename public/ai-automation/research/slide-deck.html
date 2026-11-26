@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>AI Automation Agency – Market Research Findings</title>
+<meta name="description" content="Market research findings: where AI automation pays off for small businesses in France, Germany, Austria, Spain and Romania.">
+<meta name="theme-color" content="#14213D">
+<link rel="icon" href="/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap">
+<style>
+/* ---- the deck's own styles, verbatim ---- */
+:root {
+  --ink: #14213D;
+  --light: #F7F6F2;
+  --alt: #ECEAE3;
+  --card: #FDFCF9;
+  --body: #4A5568;
+  --muted: #5F6673;
+  --accent: #B8541E;
+  --blue: #2F5D9E;
+  --grey: #9AA1AC;
+}
+
+section {
+  padding: 128px;
+  background: var(--light);
+  color: var(--ink);
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  box-sizing: border-box;
+}
+section.has-source { padding: 128px 128px 160px; }
+section.alt { background: var(--alt); }
+section.dark { background: var(--ink); }
+section.statement { background: var(--accent); }
+
+h1, h2, h3 { font-family: 'Space Grotesk', Arial, sans-serif; color: var(--ink); margin: 0; }
+h1 { font-size: 96px; line-height: 1.05; font-weight: 700; }
+h2 { font-size: 64px; line-height: 1.1; font-weight: 700; }
+h3 { font-size: 32px; line-height: 1.25; font-weight: 600; }
+p { margin: 0; font-size: 28px; line-height: 1.4; color: var(--body); }
+
+.eyebrow { font-size: 24px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.lead { font-size: 32px; line-height: 1.4; color: var(--body); }
+.small { font-size: 24px; color: var(--muted); }
+
+.dark h1, .dark h2, .dark h3 { color: var(--light); }
+.dark p { color: #C9D3E3; }
+.dark .eyebrow { color: #F2A272; }
+.statement h2, .statement h3 { color: var(--light); }
+.statement p { color: #FBEFE7; }
+.statement .eyebrow { color: #FBEFE7; }
+
+.head { display: flex; flex-direction: column; gap: 16px; }
+
+.cards { display: flex; gap: 32px; }
+.card { flex: 1; background: var(--card); border-radius: 16px; padding: 40px; display: flex; flex-direction: column; gap: 16px; }
+.alt .card { background: var(--light); }
+.statement .card { background: #A2491A; }
+.card .num { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 64px; font-weight: 700; color: var(--accent); line-height: 1; }
+.statement .card .num { color: var(--light); }
+
+.grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 64px; }
+
+.source { position: absolute; left: 128px; bottom: 64px; width: 1664px; font-size: 24px; color: var(--muted); }
+.dark .source { color: #A9B6CC; }
+
+.formula { background: var(--ink); border-radius: 16px; padding: 32px 40px; }
+.formula p { color: var(--light); font-size: 32px; }
+.formula .eyebrow { color: #F2A272; }
+
+.bars { display: flex; flex-direction: column; gap: 18px; }
+.bar-row { display: flex; align-items: center; gap: 24px; }
+.bar-label { width: 520px; font-size: 26px; color: var(--ink); line-height: 1.25; }
+.bar-label.short { width: 300px; }
+.bar-track { flex: 1; display: flex; align-items: center; gap: 20px; }
+.bar { height: 44px; background: var(--blue); border-radius: 6px; }
+.bar.hi { background: var(--accent); }
+.bar.lo { background: var(--grey); }
+.bar-val { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 28px; font-weight: 600; color: var(--ink); }
+
+.rank { display: flex; align-items: baseline; gap: 20px; border-bottom: 2px solid #DDDAD1; padding-bottom: 10px; }
+.rank .pos { width: 56px; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 28px; font-weight: 600; color: var(--accent); }
+.rank .name { flex: 1; font-size: 28px; color: var(--ink); }
+.rank .score { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 28px; font-weight: 600; color: var(--ink); }
+
+.steps { display: flex; gap: 32px; }
+.step { flex: 1; border-top: 6px solid var(--accent); padding-top: 24px; display: flex; flex-direction: column; gap: 12px; }
+.step .num { font-family: 'Space Grotesk', Arial, sans-serif; font-size: 24px; font-weight: 600; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; }
+
+table.tbl { width: 100%; border-collapse: collapse; }
+.tbl th { text-align: left; font-family: 'Space Grotesk', Arial, sans-serif; font-size: 24px; color: var(--muted); font-weight: 600; padding: 0 24px 16px 0; border-bottom: 2px solid var(--ink); }
+.tbl td { font-size: 24px; line-height: 1.35; color: var(--body); padding: 18px 24px 18px 0; border-bottom: 1px solid #D6D2C7; vertical-align: top; }
+.tbl td.c { font-family: 'Space Grotesk', Arial, sans-serif; font-weight: 600; color: var(--ink); font-size: 26px; }
+
+.dark .step { border-top-color: #F2A272; }
+.dark .step .num { color: #F2A272; }
+
+.decide { background: var(--ink); border-radius: 16px; padding: 32px 40px; display: flex; flex-direction: column; gap: 12px; }
+.decide h3 { color: var(--light); }
+.decide p { color: #C9D3E3; }
+
+.rise { animation: rise 0.6s ease-out both; }
+.d1 { animation-delay: 0.1s; }
+.d2 { animation-delay: 0.2s; }
+.d3 { animation-delay: 0.3s; }
+.d4 { animation-delay: 0.4s; }
+@keyframes rise { from { opacity: 0; transform: translateY(24px); } }
+
+/* ---- viewer ---- */
+html, body { margin: 0; height: 100%; background: #0d1220; overflow: hidden; }
+body { font-family: 'Inter', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+.stage { position: fixed; inset: 0; overflow: hidden; }
+.canvas { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; transform-origin: center center; transform: translate(-50%, -50%); box-shadow: 0 0 0 1px rgb(255 255 255 / 0.06); }
+.canvas > section { position: absolute; inset: 0; width: 1920px; height: 1080px; display: none; }
+.canvas > section.on { display: flex; }
+.hud { position: fixed; right: 16px; bottom: 14px; display: flex; align-items: center; gap: 6px; font: 500 14px/1 'Inter', Arial, sans-serif; color: #c9d3e3; z-index: 5; transition: opacity 300ms ease-out; }
+.hud.idle { opacity: 0; }
+.hud button { all: unset; cursor: pointer; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; background: rgb(255 255 255 / 0.08); color: #f7f6f2; }
+.hud button:hover { background: rgb(255 255 255 / 0.16); }
+.hud button:focus-visible { outline: 2px solid #F2A272; outline-offset: 2px; }
+.hud button[disabled] { opacity: 0.35; cursor: default; }
+.hud .count { min-width: 64px; text-align: center; font-variant-numeric: tabular-nums; }
+.hud svg { width: 18px; height: 18px; }
+@media (prefers-reduced-motion: reduce) { .rise { animation: none !important; } }
+@media print {
+  @page { size: 1920px 1080px; margin: 0; }
+  html, body { background: none; overflow: visible; height: auto; }
+  .stage { position: static; display: block; }
+  .canvas { position: static; transform: none !important; box-shadow: none; width: auto; height: auto; }
+  .canvas > section { display: flex !important; position: relative; break-after: page; }
+  .rise { animation: none !important; }
+  .hud { display: none; }
+}
+</style>
+</head>
+<body>
+<main class="stage" aria-roledescription="slide deck" aria-label="AI Automation Agency – Market Research Findings">
+<div class="canvas" id="canvas">
+<section id="cover" class="dark" style="justify-content:space-between">
+<p class="eyebrow">Market research · November 2026</p>
+<div class="head" style="width:1400px">
+<h1>Where AI automation pays off for small businesses</h1>
+<p class="lead" style="color:#C9D3E3">Niches, gaps and what other agencies sell in France, Germany, Austria, Spain and Romania</p>
+</div>
+<p class="small" style="color:#A9B6CC">[Agency name] · Vlad, Andrei, Alice</p>
+</section>
+<section id="questions">
+<div class="head">
+<p class="eyebrow">The brief</p>
+<h2>Three questions we set out to answer</h2>
+</div>
+<div class="cards">
+<div class="card rise d1"><p class="num">1</p><h3>Which niches benefit most from AI automation?</h3></div>
+<div class="card rise d2"><p class="num">2</p><h3>Which of those niches are underserved today?</h3></div>
+<div class="card rise d3"><p class="num">3</p><h3>Which services do other agencies already sell?</h3></div>
+</div>
+<p class="lead" style="width:1400px">A niche can be crowded for one service and wide open for another, so we scored <b>niche × service pairs</b>, not niches alone.</p>
+</section>
+<section id="method">
+<div class="head">
+<p class="eyebrow">Method</p>
+<h2>How we did it</h2>
+</div>
+<div class="steps">
+<div class="step rise d1"><p class="num">Step 1 · Supply</p><h3>What agencies sell</h3><p>26 agencies and vendors across five countries, searched in local languages and turned into 18 standard services</p></div>
+<div class="step rise d2"><p class="num">Step 2 · Value</p><h3>Which niches are worth it</h3><p>35 niches scored on six factors, alongside Eurostat and trade-body AI adoption data</p></div>
+<div class="step rise d3"><p class="num">Step 3 · Room left</p><h3>How crowded each pair is</h3><p>38 niche × service pairs checked for specialised tools, agencies and built-in features</p></div>
+</div>
+<div class="formula rise d4">
+<p class="eyebrow">Opportunity score (out of 5)</p>
+<p>Niche value × how much the service matters to that niche × how much room competitors have left</p>
+</div>
+</section>
+<section id="services" class="alt">
+<div class="head">
+<p class="eyebrow">Step 1 · Supply</p>
+<h2>Two kinds of players sell AI automation</h2>
+</div>
+<div class="cards">
+<div class="card rise d1"><h3>Generalist agencies</h3><p>Back-office process work: email triage, document extraction, CRM sync, reporting, training. Quoted per project; first projects start around €2,000–€5,000.</p></div>
+<div class="card rise d2"><h3>Productised software</h3><p>Front-desk bots: phone receptionists, WhatsApp chat, booking. €35–€299 a month, often bundled into the software a business already uses.</p></div>
+</div>
+<div class="head rise d3">
+<p class="eyebrow">The 18 services we found</p>
+<p style="font-size:24px">Phone receptionist · outbound recall · messaging chatbot · booking & reminders · lead qualification · inbox triage · document processing · invoicing · quoting · knowledge assistant · reporting · reviews · marketing content · outbound prospecting · HR screening · workflow integration · AI audit & training · custom apps</p>
+</div>
+</section>
+<section id="adoption" class="has-source">
+<div class="head">
+<p class="eyebrow">Step 2 · Adoption</p>
+<h2>Share of firms with 10+ staff using AI, 2025</h2>
+</div>
+<div class="bars">
+<div class="bar-row rise d1"><p class="bar-label short">Austria</p><div class="bar-track"><div class="bar" style="width:943px"></div><p class="bar-val">30%</p></div></div>
+<div class="bar-row rise d1"><p class="bar-label short">Germany</p><div class="bar-track"><div class="bar" style="width:817px"></div><p class="bar-val">26%</p></div></div>
+<div class="bar-row rise d2"><p class="bar-label short">Spain</p><div class="bar-track"><div class="bar" style="width:663px"></div><p class="bar-val">21%<span style="font-size:24px;font-weight:400;color:#5F6673"> · 34% by Q1 2026</span></p></div></div>
+<div class="bar-row rise d2"><p class="bar-label short">EU average</p><div class="bar-track"><div class="bar lo" style="width:629px"></div><p class="bar-val">20%</p></div></div>
+<div class="bar-row rise d3"><p class="bar-label short">France</p><div class="bar-track"><div class="bar" style="width:566px"></div><p class="bar-val">18%</p></div></div>
+<div class="bar-row rise d3"><p class="bar-label short">Romania</p><div class="bar-track"><div class="bar hi" style="width:163px"></div><p class="bar-val">5%<span style="font-size:24px;font-weight:400;color:#5F6673"> · lowest in the EU</span></p></div></div>
+</div>
+<p class="lead rise d4">Size matters too: 17% of small firms (10–49 staff) use AI, against 55% of firms with 250+.</p>
+<p class="source">Sources: Eurostat (Dec 2025), Insee, Statistik Austria, INE Spain (Oct 2026), i6eal note on Eurostat data</p>
+</section>
+<section id="blindspot" class="has-source">
+<div class="head">
+<p class="eyebrow">Step 2 · Adoption</p>
+<h2>The official data misses most of our customers</h2>
+</div>
+<p class="lead" style="width:1500px">The EU survey leaves out health, salons, finance and every business with fewer than 10 staff, so we filled the gap with trade-body surveys.</p>
+<div class="cards">
+<div class="card rise d1"><p class="num">48%</p><p>of German doctors’ practices use AI, but only 12% use it for phone help</p></div>
+<div class="card rise d2"><p class="num">18%</p><p>of German tax firms actively use AI in daily work</p></div>
+<div class="card rise d3"><p class="num">4–70%</p><p>German trades: survey figures conflict (Bitkom vs a vendor’s own survey)</p></div>
+<div class="card rise d4"><p class="num">86%</p><p>of EU firms not using AI have never even considered it</p></div>
+</div>
+<p class="source">Sources: KBV PraxisBarometer 2026, awicontax Zukunftskompass 2026, Bitkom 2025, plancraft 2026, Statistik Austria</p>
+</section>
+<section id="niches" class="has-source">
+<div class="head">
+<p class="eyebrow">Step 2 · Value</p>
+<h2>Top niches by value, before competition</h2>
+</div>
+<div class="grid2">
+<div style="display:flex;flex-direction:column;gap:16px">
+<div class="rank"><p class="pos">1</p><p class="name">Dental practices</p><p class="score">4.35</p></div>
+<div class="rank"><p class="pos">2</p><p class="name">Aesthetic clinics</p><p class="score">4.30</p></div>
+<div class="rank"><p class="pos">3</p><p class="name">Real estate agencies</p><p class="score">4.20</p></div>
+<div class="rank"><p class="pos">4</p><p class="name">Solar & heat-pump installers</p><p class="score">4.10</p></div>
+<div class="rank"><p class="pos">5</p><p class="name">B2B wholesalers</p><p class="score">4.10</p></div>
+<div class="rank"><p class="pos">6</p><p class="name">Property managers</p><p class="score">4.05</p></div>
+<div class="rank"><p class="pos">7</p><p class="name">Car dealerships</p><p class="score">4.05</p></div>
+<div class="rank"><p class="pos">8</p><p class="name">Tax & accounting firms</p><p class="score">3.95</p></div>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div class="rank"><p class="pos">9</p><p class="name">Holiday-rental managers</p><p class="score">3.95</p></div>
+<div class="rank"><p class="pos">10</p><p class="name">Event & wedding venues</p><p class="score">3.95</p></div>
+<div class="rank"><p class="pos">11</p><p class="name">Recruitment agencies</p><p class="score">3.85</p></div>
+<div class="rank"><p class="pos">12</p><p class="name">Plumbing & heating</p><p class="score">3.85</p></div>
+<div class="rank"><p class="pos">13</p><p class="name">Moving companies</p><p class="score">3.85</p></div>
+<div class="rank"><p class="pos">14</p><p class="name">Insurance brokers</p><p class="score">3.80</p></div>
+<div class="rank"><p class="pos">14</p><p class="name">Roofing & renovation</p><p class="score">3.80</p></div>
+<div class="rank"><p class="pos">14</p><p class="name">Independent hotels</p><p class="score">3.80</p></div>
+</div>
+</div>
+<p class="source">Value score out of 5: comms & admin volume 25%, value per lead 20%, ability to pay 20%, reachability 15%, digital readiness 10%, regulatory ease 10%</p>
+</section>
+<section id="taken" class="statement">
+<div class="head">
+<p class="eyebrow">Step 3 · Competition</p>
+<h2>Front-desk AI is already taken</h2>
+</div>
+<div class="cards">
+<div class="card rise d1"><h3>Trades</h3><p>One German phone assistant already serves 2,500+ trade businesses</p></div>
+<div class="card rise d2"><h3>Car dealers</h3><p>AutoScout24 gives dealers AI lead qualification for free</p></div>
+<div class="card rise d3"><h3>Holiday rentals</h3><p>Rental software claims to automate up to 90% of guest messages</p></div>
+<div class="card rise d4"><h3>Tax firms</h3><p>DATEV has had an AI assistant built in since February 2026</p></div>
+</div>
+<p class="lead" style="color:#FBEFE7;width:1400px">Phone bots, guest messaging and lead follow-up came out bottom of the grid in almost every niche.</p>
+</section>
+<section id="grid" class="has-source">
+<div class="head">
+<p class="eyebrow">Step 3 · Opportunity</p>
+<h2>Best niche × service opportunities</h2>
+</div>
+<div class="bars">
+<div class="bar-row rise d1"><p class="bar-label" style="width:700px;font-size:24px">Event venues · inquiry & quote prep</p><div class="bar-track"><div class="bar hi" style="width:740px"></div><p class="bar-val">3.16</p></div></div>
+<div class="bar-row rise d1"><p class="bar-label" style="width:700px;font-size:24px">Wholesalers · non-order inbox</p><div class="bar-track"><div class="bar" style="width:614px"></div><p class="bar-val">2.62</p></div></div>
+<div class="bar-row rise d2"><p class="bar-label" style="width:700px;font-size:24px">Property managers · documents</p><div class="bar-track"><div class="bar" style="width:607px"></div><p class="bar-val">2.59</p></div></div>
+<div class="bar-row rise d2"><p class="bar-label" style="width:700px;font-size:24px">Aesthetic clinics DE/AT/FR · messaging agent</p><div class="bar-track"><div class="bar" style="width:604px"></div><p class="bar-val">2.58</p></div></div>
+<div class="bar-row rise d2"><p class="bar-label" style="width:700px;font-size:24px">Aesthetic clinics · lead follow-up</p><div class="bar-track"><div class="bar" style="width:604px"></div><p class="bar-val">2.58</p></div></div>
+<div class="bar-row rise d3"><p class="bar-label" style="width:700px;font-size:24px">Property managers · email triage</p><div class="bar-track"><div class="bar" style="width:569px"></div><p class="bar-val">2.43</p></div></div>
+<div class="bar-row rise d3"><p class="bar-label" style="width:700px;font-size:24px">Tax firms · inbox & chasing documents</p><div class="bar-track"><div class="bar" style="width:555px"></div><p class="bar-val">2.37</p></div></div>
+<div class="bar-row rise d3"><p class="bar-label" style="width:700px;font-size:24px">Plumbers & movers · quote prep</p><div class="bar-track"><div class="bar" style="width:541px"></div><p class="bar-val">2.31</p></div></div>
+<div class="bar-row rise d4"><p class="bar-label" style="width:700px;font-size:24px;color:#5F6673">For comparison: dental phone receptionist</p><div class="bar-track"><div class="bar lo" style="width:164px"></div><p class="bar-val" style="color:#5F6673">0.70</p></div></div>
+</div>
+<p class="source">Opportunity out of 5 = niche value × service fit × room left. Full grid of 38 pairs in the research spreadsheet.</p>
+</section>
+<section id="gaps" class="alt">
+<div class="head">
+<p class="eyebrow">Step 3 · Opportunity</p>
+<h2>Six gaps worth testing</h2>
+</div>
+<div class="grid3">
+<div class="card rise d1"><h3>Event & wedding venues</h3><p style="font-size:24px">Only freelancers sell inquiry chatbots; we found no specialised product</p></div>
+<div class="card rise d1"><h3>Wholesalers</h3><p style="font-size:24px">Order-reading software exists; the rest of the inbox is open</p></div>
+<div class="card rise d2"><h3>Property managers</h3><p style="font-size:24px">Specialists are early; small firms are told to DIY with ChatGPT</p></div>
+<div class="card rise d2"><h3>Aesthetic clinics in DE/AT/FR</h3><p style="font-size:24px">Crowded in Spain (from €99/month); only generic tools elsewhere</p></div>
+<div class="card rise d3"><h3>Tax firms</h3><p style="font-size:24px">DATEV covers bookkeeping; inbox triage and document chasing are DIY</p></div>
+<div class="card rise d3"><h3>Trades & movers</h3><p style="font-size:24px">Software adds AI quoting; collecting missing details first is open</p></div>
+</div>
+</section>
+<section id="positioning" class="dark">
+<div class="head">
+<p class="eyebrow">What this means for us</p>
+<h2>We sell the connection between AI and the software businesses already run</h2>
+</div>
+<div class="steps">
+<div class="step rise d1"><p class="num">Don’t</p><h3>Resell bots</h3><p>Phone and chat bots are a price race against €35-a-month software and free portal features</p></div>
+<div class="step rise d2"><p class="num">Do</p><h3>Integrate around industry software</h3><p>DATEV, property-management tools, ERPs and trades software: set up, connected and maintained by us</p></div>
+<div class="step rise d3"><p class="num">Edge</p><h3>Local language and EU compliance</h3><p>Native French, German, Spanish and Romanian; EU hosting and AI Act disclosure built in</p></div>
+</div>
+</section>
+<section id="markets">
+<div class="head">
+<p class="eyebrow">Markets</p>
+<h2>Market by market</h2>
+</div>
+<table class="tbl">
+<tr><th style="width:220px">Country</th><th style="width:280px">Main channel</th><th>What stands out</th><th style="width:520px">Our angle</th></tr>
+<tr><td class="c">France</td><td>Phone + email</td><td>14+ French AI phone tools; Doctolib bundles voice for doctors</td><td>Staff AI training can be funded via OPCO, an easy way in</td></tr>
+<tr><td class="c">Germany</td><td>Phone + email</td><td>~90 AI phone tools; strong demand for GDPR and EU hosting</td><td>Back office around DATEV and industry software</td></tr>
+<tr><td class="c">Austria</td><td>Phone + email</td><td>Small agency scene; home-grown voice tools (fonio)</td><td>German-language work carries over; chamber of commerce (WKO) as a channel</td></tr>
+<tr><td class="c">Spain</td><td>WhatsApp first</td><td>Adoption jumped to 34%; aesthetic clinics already crowded</td><td>WhatsApp + CRM agents outside the crowded niches</td></tr>
+<tr><td class="c">Romania</td><td>WhatsApp + phone</td><td>5% adoption; setups sold from €120</td><td>Local integrations (SmartBill, Oblio, e-Factura); small ticket sizes</td></tr>
+</table>
+</section>
+<section id="next" class="alt">
+<div class="head">
+<p class="eyebrow">Next steps</p>
+<h2>Validate before we build</h2>
+</div>
+<div class="steps">
+<div class="step rise d1"><p class="num">1</p><h3>Pick 3–4 gaps</h3><p>From the top of the opportunity grid</p></div>
+<div class="step rise d2"><p class="num">2</p><h3>Audit 100+ businesses each</h3><p>Website chat, online booking, how fast they reply to inquiries</p></div>
+<div class="step rise d3"><p class="num">3</p><h3>Talk to 10–15 owners each</h3><p>In French, German, Spanish and Romanian</p></div>
+<div class="step rise d4"><p class="num">4</p><h3>Build one pilot offer</h3><p>For the gap that survives validation</p></div>
+</div>
+<div class="decide rise d4">
+<h3>Decisions for today</h3>
+<p>Which gaps do we validate? · Which country first? · Who runs which interviews? · Agency name</p>
+</div>
+</section>
+</div>
+</main>
+<nav class="hud" id="hud" aria-label="Slide controls">
+<button id="prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+<span class="count" id="count" aria-live="polite"></span>
+<button id="next" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+<button id="fs" aria-label="Toggle full screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button>
+</nav>
+<script>
+(() => {
+  const canvas = document.getElementById('canvas');
+  const slides = [...canvas.children];
+  const count = document.getElementById('count');
+  const prev = document.getElementById('prev'), next = document.getElementById('next');
+  const hud = document.getElementById('hud');
+  let i = 0;
+  const fit = () => {
+    const k = Math.min(innerWidth / 1920, innerHeight / 1080);
+    canvas.style.transform = `translate(-50%, -50%) scale(${k})`;
+  };
+  const fromHash = () => {
+    const m = location.hash.match(/^#slide-(\d+)$/);
+    return m ? Math.min(Math.max(parseInt(m[1], 10) - 1, 0), slides.length - 1) : 0;
+  };
+  const show = (n, push = true) => {
+    i = Math.min(Math.max(n, 0), slides.length - 1);
+    slides.forEach((s, k) => {
+      s.classList.toggle('on', k === i);
+      s.setAttribute('aria-hidden', k === i ? 'false' : 'true');
+      s.setAttribute('aria-roledescription', 'slide');
+      s.setAttribute('aria-label', `${k + 1} of ${slides.length}`);
+    });
+    count.textContent = `${i + 1} / ${slides.length}`;
+    prev.disabled = i === 0; next.disabled = i === slides.length - 1;
+    if (push) history.replaceState(null, '', i ? `#slide-${i + 1}` : location.pathname);
+  };
+  prev.onclick = () => show(i - 1);
+  next.onclick = () => show(i + 1);
+  document.getElementById('fs').onclick = () => {
+    if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen?.();
+  };
+  addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+    else if (e.key === 'f') document.getElementById('fs').click();
+  });
+  document.querySelector('.stage').addEventListener('click', e => {
+    if (e.target.closest('a')) return;
+    show(e.clientX > innerWidth / 3 ? i + 1 : i - 1);
+  });
+  let x0 = null;
+  addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  addEventListener('touchend', e => {
+    if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 40) show(dx < 0 ? i + 1 : i - 1);
+  }, { passive: true });
+  addEventListener('hashchange', () => show(fromHash(), false));
+  let t; const wake = () => { hud.classList.remove('idle'); clearTimeout(t); t = setTimeout(() => hud.classList.add('idle'), 2500); };
+  addEventListener('mousemove', wake); addEventListener('keydown', wake); wake();
+  addEventListener('resize', fit); fit(); show(fromHash(), false);
+})();
+</script>
+</body>
+</html>
