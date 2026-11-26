@@ -13,7 +13,7 @@ import { useEffect, useRef } from 'react'
 const BLUE = [37, 99, 235]
 const INK = [17, 18, 20]
 const GAP = 20 // px between dots
-const R = 170 // cursor influence radius, px
+const R = 250 // cursor influence radius, px
 // How strongly dots react under the cursor (0 = not at all).
 const HOVER_GROW = 0.75 // extra radius, px (resting radius is 1px)
 const HOVER_ALPHA = 0.52 // extra opacity on top of the resting 0.14
