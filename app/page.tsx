@@ -266,8 +266,8 @@ export default function HomePage() {
               <div className="cta__copy">
                 <h2 className="cta__h">Have something in mind?</h2>
                 <p className="cta__p">
-                  Tell me what you are building. A website, an app, or just an idea you want a
-                  second opinion on.
+                  Tell me what you are building. An automation, a website, an app, or just an
+                  idea you want a second opinion on.
                 </p>
                 <p className="cta__actions">
                   <a className="pill pill--light" href={`mailto:${EMAIL}`}>Get in touch</a>
