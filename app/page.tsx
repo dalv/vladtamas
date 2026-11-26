@@ -50,8 +50,8 @@ export default function HomePage() {
                 Hi, I&apos;m <strong>Vlad</strong><span className="hero__dot">.</span>
               </h1>
               <p className="hero__sub">
-                I design and build websites and mobile apps that are simple, fast and a
-                pleasure to use. Nice to meet you.
+                I build AI automations, websites and mobile apps that are simple, fast and
+                a pleasure to use. Nice to meet you.
               </p>
               <p className="hero__actions">
                 <a className="pill pill--light" href="#work">See my work</a>
