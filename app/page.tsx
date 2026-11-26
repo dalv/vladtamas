@@ -1,4 +1,5 @@
 import Motion from './motion'
+import HeroTexture from './hero-texture'
 
 const EMAIL = 'vlad.tamas@gmail.com'
 
@@ -32,6 +33,7 @@ export default function HomePage() {
       <main id="top">
         {/* 1 · Hero: a personal hello, centred under a small round portrait. */}
         <section className="hero" data-sc-act="flow">
+          <HeroTexture />
           <div className="hero__inner sc-wrap">
             <div className="portrait">
               <img

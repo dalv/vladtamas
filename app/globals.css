@@ -169,6 +169,16 @@ img { display: block; }
   align-items: center;
   padding-block: calc(var(--nav-h) + 3rem) 4rem;
 }
+/* Cursor-reactive texture behind the hero (drawn by hero-texture.tsx). */
+.hero-texture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 80% 75% at 50% 35%, #000 35%, transparent 85%);
+  mask-image: radial-gradient(ellipse 80% 75% at 50% 35%, #000 35%, transparent 85%);
+}
+
 .hero__inner {
   position: relative;
   z-index: 2;
